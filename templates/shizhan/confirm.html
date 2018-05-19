@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title> 确认订单</title>
+
+{% endblock %}
+{% block self_css %}
+    <link href="{% static 'css/confirm.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/shizhan.min.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+
+{% block body_main %}
+    <div class="body-main">
+        <div class="cart-header">
+            <div class="cart-header-warp clearfix">
+                <div class="cart-title left clearfix">
+                    <h1 class="left">确认订单</h1>
+
+
+                </div>
+                <div class="right">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cart-body" id="cartBody">
+            <div class="title-box clearfix">
+                <p class="l goods-info-title">商品信息</p>
+                <a href="https://www.imooc.com/user/feedback?order" target="_blank" class="r">我有疑问，需要反馈？</a>
+            </div>
+
+            <div class="detail-box">
+                <ul>
+                    <li class="clearfix js-item-cart js-each-194" data-type="1" data-typeid="194" data-goodsid="718">
+
+                        <a href="{% url 'fights:fight_class' fight.id %}" target="_blank"><img
+                                src="{{ MEDIA_URL }}{{ fight.image }}" class="l"></a>
+                        <div class="text-info-box l">
+
+                            <p class="package-title"></p>
+                            <a href="{% url 'fights:fight_class' fight.id %}" target="_blank"><p
+                                    class="package-info-title">{{ fight.name }}</p></a>
+
+
+                        </div>
+                        <p class="info-price l"><em>￥</em><span>{{ fight.price }}</span></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pay-box clearfix">
+                <div class="goods-total-price-box clearfix">
+                    <p class="r rw price-num">
+                        <em>￥</em><span id="js-actual-price">{{ fight.price }}</span>
+                    </p>
+                    <p class="r price-text">共<span>1</span>件商品，商品总金额：</p>
+                </div>
+                <!-- 优惠券抵扣 -->
+                <!-- 优惠券抵扣end -->
+
+
+                <div class="pay-price-box clearfix">
+                    <p class="r rw price">
+                        <em>￥</em><span id="js-pay-price">{{ fight.price }}</span>
+                    </p>
+                    <p class="r price-text">应付：</p>
+                </div>
+                <div class="pay-account-box clearfix">
+                    <p class="pay-account r">购买账号：<span>{{ user.nick_name }}</span></p>
+                </div>
+                <form method="post" action="{% url 'fights:fight_confirm' %}">
+
+                    <input value="{{ fight.id}}" name="fight_ids" style="display: none"/>
+                <input class="r moco-btn moco-btn-red submit-btn" type="submit"  value="提交订单">
+                    {% csrf_token %}
+                </form>
+{#
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}

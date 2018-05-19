@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    {% block title %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+       <link href="{% static 'css/ydx-main.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    {% block self_css %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+<!-- <nav class="navbar navbar-default my-navbar navbar-inverse">  -->
+
+<nav class="navbar navbar-default my-navbar ">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <img alt="Brand" class="logo" src="../image/ydx6.png"> -->
+            <a class="navbar-brand mynavbar-brand" href="{% url 'index' %}">
+                <img alt="Brand" class="logo" src="{% static 'image/ydx.png' %}">
+            </a>
+
+            <!--  -->
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav my-navbar-nav">
+                <li>
+                    <a href="{% url 'index' %}">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'courses:courser_list' %}">
+                        免费课程
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{% url 'fights:fight_list' %}">
+                        实战
+                    </a>
+                </li>
+                <li>
+
+                    <a href="{% url 'courses:search' %}">
+                        搜索
+
+                    </a>
+                </li>
+
+            </ul>
+            {% if request.user.is_authenticated %}
+                <ul class="navbar-right mynav">
+
+
+                    <li class="mydropdown"><a href="{% url 'fights:fight_cart' %}">购物车<span class="shopping_icon" name="cart-nums">{{ user.get_cart_nums }}</span></a></li>
+
+                    <li class="mydropdown">
+
+                        <a href="#" class="mydropdown-name">{{ user.nick_name }}<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu mydropdown-menu">
+                            <li class="mydropdown-menu-li">
+                                <a href="{% url 'users:user_info' %}">
+                                    个人设置
+                                </a>
+                            </li>
+                            <li class="mydropdown-menu-li">
+                                <a href="{% url 'users:info_courses' %}">
+                                    我的课程
+                                </a>
+                            </li>
+                            <li class="mydropdown-menu-li">
+                                <a href="{% url 'fights:myorder' %}">
+                                    订单中心
+                                </a>
+                            </li>
+                            <li class="mydropdown-menu-li">
+                                <a href="{% url 'users:logout' %}">
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'users:login' %}">登陆</a></li>
+                    <li><a href="{% url 'users:register' %}">注册</a></li>
+                </ul>
+            {% endif %}
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="go-top" data-toggle="tooltip" data-placement="left" title="返回顶部">
+    <div class="arrow">
+    </div>
+    <div class="stick">
+    </div>
+</div>
+{% block body_main %}
+
+{% endblock %}
+
+
+{% block self_js %}
+
+{% endblock %}
+<script>
+    $(window).scroll(function () {
+        if ($(".navbar").offset().top > 50) {
+            $(".navbar-fixed-top").addClass("top-nav");
+            $('.logo').hide();
+        } else {
+            $(".navbar-fixed-top").removeClass("top-nav");
+            $('.logo').show();
+
+        }
+    });
+
+    $(document).ready(function () {
+        dropdownOpen();//调用
+    });
+
+    /**
+     * 鼠标划过就展开子菜单，免得需要点击才能展开
+     */
+    function dropdownOpen() {
+
+        var $dropdownLi = $('li.mydropdown');
+
+        $dropdownLi.mouseover(function () {
+            $(this).addClass('open');
+        }).mouseout(function () {
+            $(this).removeClass('open');
+        });
+    }
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 600) $('div.go-top').show();
+            else $('div.go-top').hide();
+        });
+        $('div.go-top').click(function () {
+            $('html, body').animate({
+                    scrollTop: 0
+                },
+                600);
+        });
+    });
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

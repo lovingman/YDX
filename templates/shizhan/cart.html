@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title> 购物车</title>
+
+{% endblock %}
+{% block self_css %}
+    <link href="{% static 'css/cart.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/shizhan.min.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+
+
+
+{% block body_main %}
+    <div class="body-main">
+
+
+        <div class="cart-header">
+            <div class="cart-header-warp clearfix">
+                <div class="cart-title left clearfix">
+                    <h1 class="left">我的购物车</h1>
+
+                    <div class="left js-number-box-cart" id="pleft">
+                        共<span class="js-coures-num">{{ fight_num }}</span>门
+                    </div>
+
+                </div>
+                <div class="right">
+
+                    <div class="clearfix">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% ifequal fight_num 0 %}
+                 <div class="cart-body" id="cartBody">
+                    <h3 class="notdata" >购物车内空空如也</h3>
+                </div>
+
+            {% else %}
+
+        <div class="cart-body" id="cartBody">
+            <div class="cart-body-title clearfix">
+                <div class="item-1 l">
+{#                    <input type="checkbox" name="selectAll" class="c-93999f"/><span class="lightgrey">全选</span>#}
+                </div>
+
+                <div class="item-2 l">
+                    <span class="c-4d555d">课程</span>
+                </div>
+
+                <div class="item-3 l">
+                    <span class="c-4d555d">金额</span>
+                </div>
+
+                <div class="item-4 l">
+                    <span class="c-4d555d">操作</span>
+                </div>
+            </div>
+             <form action="{% url 'fights:fight_confirm' %}" method="post">
+            <div id="js-cart-body-table" class="cart-body-table">
+               {% for fight in fights %}
+                <div class="item clearfix js-item-cart js-each-195">
+                    <div class="item-1">
+                        <input style="display: none" name="fight_ids"  value="{{ fight.id }}" />
+
+                    </div>
+
+                    <div class="item-2 clearfix">
+                        <a href="https://coding.imooc.com/class/195.html" target="_blank" class="img-box l">
+                            <img src="{{ MEDIA_URL }}{{ fight.image }}" width="160" height="90">
+                        </a>
+                        <dl class="l has-package">
+                            <a href="https://coding.imooc.com/class/195.html" target="_blank">
+                                <dt>{{ fight.name }}</dt>
+                            </a>
+                            <!-- 组合套餐 -->
+{#                            <p class="package-item js-package-item" data-cid="195"></p>#}
+                        </dl>
+                    </div>
+
+                    <div class="item-3">
+                        <div class="price">
+                            <em>￥</em>
+                            <span id="money" data-price="{{ fight.price }}">{{ fight.price }}</span>
+
+                        </div>
+                    </div>
+
+                    <div class="item-4">
+                        <a class="glyphicon glyphicon-remove" href="{% url 'fights:fight_remove' %}?fight_id={{ fight.id }}" style="top: 40px;text-decoration: none"></a>
+                    </div>
+                </div>
+                <div id="Anchor"></div>
+                   {% endfor %}
+{##}
+
+                <div class="cart-body-bot js-cart-body-bot">
+                    <div class="clearfix cart-body-bot-box">
+
+
+                        <div class="right">
+                            <ul class="clearfix">
+                                <li class="li-2">
+                                    <div class="topdiv">总计金额：</div>
+                                    <div class="price price-red clearfix">
+                                        <em>￥</em>
+                                        <span class="totalPrice">{{ price }}</span>
+
+                                    </div>
+                                </li>
+                            {% csrf_token %}
+                                <li class="li-3">
+                                    <input type="submit" class="btn js-go-confrim" id="go-confrim" value="去结算"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             </form>
+        </div>
+      {% endifequal %}
+    </div>
+
+
+
+{##}
+{#        <script>#}
+{##}
+{#                                    $('#go-confrim').hide()#}
+{#                                    $(function () {#}
+                                        {#             isNull();#}
+{#//            全选#}
+{#                                        var selectAll = $("input[name=selectAll]");#}
+{#//            选择item#}
+{#                                        var selectItem = $("input[name=checkItem]");#}
+{##}
+{#//            总价#}
+{#                                        var totalPrice = $(".totalPrice");#}
+{#                                        var price = 0;#}
+{##}
+{#//            已选择#}
+{#                                        var sel = $("#pleft > span:last-child");#}
+{##}
+{#                                        selectItem.click(function () {#}
+{#                                            price=0#}
+{#                                            getTotalMoney();#}
+{#                                        });#}
+{##}
+{#//            全选#}
+{#                                        selectAll.click(function () {#}
+{#                                            price=0#}
+{#                                            selectItem.prop("checked", selectAll.prop("checked"));#}
+{#                                            getTotalMoney();#}
+{#                                        });#}
+{##}
+{##}
+{#//			是否选择判断#}
+{##}
+{#                                        function getTotalMoney() {#}
+{#                                            var mycart=new Array()#}
+{#                                            price = 0;#}
+{#                                            totalPrice.text(price);#}
+{#                                            courseNum = $("input[name=checkItem]:checked").length;#}
+{#                                            $("#pleft > span:last-child").text(courseNum);#}
+{#                                            if (courseNum > 0) {#}
+{#                                                $('#go-confrim').show()#}
+{#                                            } else {#}
+{#                                                $('#go-confrim').hide()#}
+{#                                            }#}
+{#                                        }#}
+{##}
+{##}
+{#                                    });#}
+{##}
+{##}
+{#                            </script>#}
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+

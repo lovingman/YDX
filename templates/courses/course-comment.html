@@ -1,0 +1,247 @@
+<html>
+ <head></head>
+ <body>
+  {% extends 'base.html' %} {% load staticfiles %} {% block title %} 
+  <title>
+        课程评论
+    </title> {% endblock %}
+  {% block self_css %}
+  <link rel="stylesheet" href="{% static 'css/ydx-comment.css' %}" />
+  {% endblock %} {% block self_js %} {% endblock %}
+  {% block body_main %}
+  <div> 
+   <div id="main"> 
+    <div class="course-infos"> 
+     <div class="w pr"> 
+      <div class="path"> 
+       <a href="{% url 'courses:courser_list' %}">课程</a> 
+       <i class="path-split">\</i> 
+       <a href="/courses/list?category_code={{ course.course_category.code }}">{{ course.course_category.name }}</a> 
+       <i class="path-split">\</i> 
+       <a href="/courses/list?type={{ course.course_type }}">{{ course.get_course_type_display }}</a> 
+       <i class="path-split">\</i> 
+       <a href="#"><span>{{ course.name }}</span></a> 
+      </div> 
+      <div class="hd clearfix"> 
+       <h2 class="l">{{ course.name }}</h2> 
+      </div> 
+      <div class="statics clearfix"> 
+       <div class="moco-btn l learn-btn green-btn red-btn"> 
+         {% if lessons %}
+             {% if request.user.is_authenticated %}
+                        <a href="{% url 'courses:video' video.id%}" class="J-learn-course">{% if has_learn_course %}
+                            继续学习{% else %}开始学习{% endif %}</a><em></em>
+                        {% else %}
+                            <a class="J-learn-course">未上线呀</a> <em></em>
+                 {% endif %}
+                        {% endif %}
+        <span  class="J-learn-course" id="fav"> {% if has_fav_course %}已收藏{% else %} 收藏{% endif %}</span>
+        <script type="text/javascript">
+                                //收藏分享
+                                function add_fav(current_elem, fav_id, fav_type) {
+                                    $.ajax({
+                                        cache: false,
+                                        type: "POST",
+                                        url: "{% url "courses:addfav_course" %}",
+                                        data: {'fav_id': fav_id, 'fav_type': fav_type},
+                                        async: true,
+                                        beforeSend: function (xhr, settings) {
+                                            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                        },
+                                        success: function (data) {
+                                            if (data.status == 'fail') {
+                                                if (data.msg == '用户未登录') {
+                                                    window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                                                }
+
+                                            } else if (data.status == 'success') {
+                                                 window.location.href = "{% url 'courses:comments' course.id %}";
+
+                                            }
+                                        },
+                                    });
+                                }
+
+                                $(document).ready(function () {
+                                    $('#fav').on('click', function () {
+                                    add_fav($(this), {{ course.id }}, 1);
+                                  });
+                                });
+
+
+
+                            </script> 
+       </div>
+         {% if request.user.is_authenticated %}{% if progesses %}
+                    <div class="static-item l">
+                        <span class="meta">上次学到</span>
+                        <span class="meta-value">{{ video.name }}</span>
+                    </div>
+             {% endif %}
+                   {% endif %}
+       <div class="static-item l"> 
+        <span class="meta">学习人数</span> 
+        <span class="meta-value js-learn-num">{{ course.students }}</span>
+           {% if progesses %}
+           <em></em>
+           {% endif %}
+       </div> 
+       <div class="static-item l"> 
+        <span class="meta">难度级别</span> 
+        <span class="meta-value">{{ course.get_is_easy_display }}</span> 
+        <em></em> 
+       </div> 
+       <div class="static-item l"> 
+        <span class="meta">课程时长</span> 
+        <span class="meta-value">{{ course.learn_times }}分钟</span> 
+        <em></em> 
+       </div>
+
+      </div> 
+     </div> 
+    </div> 
+    <div class="course-info-main clearfix w"> 
+     <div class="content-wrap"> 
+      <div class="content"> 
+       <!-- 课程简介 --> 
+       <div class="course-brief"> 
+        <p class="auto-wrap"> {{ course.desc }}</p> 
+       </div> 
+       <!-- 课程简介 end --> 
+       <div class="mod-tab-menu "> 
+        <ul class="course-menu clearfix"> 
+         <li><a class="ui-tabs-active" id="learnOn" href="{% url 'courses:course_detail' course.id %}"><span>章节</span></a></li> 
+         <li><a id="commentOn" class="active" href="#"><span>评论</span></a> </li> 
+
+        </ul> 
+       </div> 
+
+       <!--评论--> 
+       <div id="js-pub-container" class="issques clearfix js-form">
+         {% if user.is_authenticated %} 
+        <a href="http://www.imooc.com/u/1391582" class="user-head l"> <img src="{{ MEDIA_URL }}{{ user.image }}" alt="" /> </a> {% endif %} 
+        <div class="wgt-ipt-wrap pub-editor-wrap l" id="js-pl-input-fake"> 
+         <textarea id="js-pl-textarea" name="comments" placeholder="扯淡、吐槽、表扬、鼓励……想说啥就说啥！"></textarea> 
+         <span class="num-limit"><span id="js-pl-limit">0</span>/300</span> 
+        </div> 
+        <div id="pub-btm" class="pub-btm clearfix"> 
+         <input id="js-pl-submit" class="pub-btn comment-pub-btn r"  value="发表评论" />
+         <script>
+                                    function add_comments(current_elem, course_id, comments) {
+                                        $.ajax({
+                                            cache: false,
+                                            type: "POST",
+                                            url: "{% url 'courses:addcomments' %}",
+                                            data: {'course_id': course_id, 'comments': comments},
+                                            async: true,
+                                            beforeSend: function (xhr, settings) {
+                                                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                            },
+                                            success: function (data) {
+                                                if (data.status == 'fail') {
+                                                    if (data.msg == '用户未登录') {
+                                                        window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                                                    } else {
+                                                    }
+
+                                                } else if (data.status == 'success') {
+                                                    $('#js-pl-textarea').val("")
+                                                    window.location.href = "{% url 'courses:comments' course.id %}";
+
+                                                }
+                                            },
+                                        });
+                                    }
+                                     $(document).ready(function () {
+                                    $('#js-pl-submit').on('click', function () {
+                                        add_comments($(this), {{ course.id }}, $('#js-pl-textarea').val());
+                                    });
+                                     });
+                                </script> 
+        </div> 
+        <p class="global-errortip js-global-error"></p> 
+       </div> 
+       <div id="course_note"> 
+        <ul class="mod-post" id="comment-list">
+          {% for comments in all_comments %} 
+         <li class="post-row" id="479231"> 
+          <div class="media"> 
+           <a href="http://www.imooc.com/u/3555574/courses" target="_blank"><img src="{{ MEDIA_URL }}{{ comments.user.image }}" width="40" height="40" /></a> 
+          </div> 
+          <div class="bd"> 
+           <div class="tit"> 
+            <a href="#" target="_blank">{{ comments.user.nick_name }}</a> 
+           </div> 
+           <p class="cnt">{{ comments.comments }}</p> 
+           <div class="footer clearfix"> 
+            <span title="创建时间" class="l timeago">时间：{{ comments.add_time }}</span> 
+           </div> 
+          </div> </li> {% endfor %} 
+        </ul> 
+       </div> 
+       <!-- 课程评论 end --> 
+      </div> 
+      <!--content end--> 
+      <div class="aside r"> 
+       <div class="bd"> 
+        <div class="box mb40 js-usercard-box"> 
+         <h4><a>讲师提示</a></h4> 
+         <div class="teacher-info"> 
+          <a href="{% url 'teachers:teacher_detail' course.teacher.id %}" target="_blank"> <img data-userid="497216" class="js-usercard-dialog" src="{{ MEDIA_URL }}{{ course.teacher.image }}" width="80" height="80" /> </a> 
+          <span class="tit"> <a href="{% url 'teachers:teacher_detail' course.teacher.id %}" target="_blank">{{ course.teacher.name }}</a><i class="icon-imooc"></i> </span> 
+          <span class="job">{{ course.teacher.work_position }}</span> 
+         </div> 
+         <div class="course-info-tip"> 
+          <dl class="first"> 
+           <dt>
+             课程须知 
+           </dt> 
+           <dd class="autowrap">
+             {% autoescape off %} {{ course.youneed_konw }} {% endautoescape %} 
+           </dd> 
+          </dl> 
+          <dl> 
+           <dt>
+             老师告诉你能学到什么？ 
+           </dt> 
+           <dd class="autowrap">
+             {% autoescape off %} {{ course.teacher_tell }} {% endautoescape %} 
+           </dd> 
+          </dl> 
+         </div> 
+        </div> 
+        <div class="js-recom-box"> 
+         <div class="box mb40 all-attention-box"> 
+          <h4>大家都关注</h4> 
+          <div class="js-all-attention all-attention">
+            {% for learn_course in all_learn_course %} 
+           <a href="{% url 'courses:course_detail' learn_course.id %}" target="_blank" data-id="20" class="orange fs16 bold">{{ learn_course.name }}</a> {% endfor %} 
+          </div> 
+         </div> 
+         <div class="box mb40 recom-course-list-box"> 
+          <h4>推荐课程</h4> {% for relate_cours in relate_courses %} 
+          <ul class="js-recom-course recom-course-list clearfix"> 
+           <li class="clearfix"><a href="{% url 'courses:course_detail' relate_cours.id %}" class="clearfix" target="_blank"> 
+             <div class="l course-img"> 
+              <div class="cart-color purple" style="background-image: url({{ MEDIA_URL }}{{ relate_cours.image }});">
+              </div> 
+             </div> 
+             <div class="l content-box"> 
+              <p class="smalle-title">{{ relate_cours.name }}</p> 
+              <div class="clearfix learn-detail">
+                {{ relate_cours.get_is_easy_display }} 
+               <span>&middot;</span>{{ relate_cours.students }}人在学 
+              </div> 
+             </div> </a></li> {% endfor %} 
+          </ul> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="clear"></div> 
+    </div> 
+   </div> 
+  </div> {% endblock %} 
+ </body>
+</html>

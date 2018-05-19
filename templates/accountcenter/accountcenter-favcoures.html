@@ -1,0 +1,127 @@
+{% extends 'accountcenter/accountcenter-base.html' %}
+{% block self_css %}
+    <style>
+        .page {
+            margin: 25px 0 auto;
+            overflow: hidden;
+            clear: both;
+            text-align: center;
+        }
+
+        .page span, .page-disabled {
+            height: 32px;
+            color: #c8cdd2;
+        }
+
+        .page a {
+            padding: 0 4px;
+            min-width: 24px;
+            line-height: 32px;
+            font-size: 18px;
+            display: inline-block;
+            text-align: center;
+        }
+
+    </style>
+
+{% endblock %}
+{% block main_body %}
+    <div class="course_container center_main_con clearfix">
+        <div class="left_nav">
+
+            <ul class="">
+
+                <li><a href="{% url 'users:info_courses' %}">我的课程</a></li>
+                <li class="select"><a href="{% url 'users:info_myfav' %}">我的收藏</a></li>
+
+                <li><a href="{% url 'users:fav_teacher' %}">我的老师</a></li>
+
+                <li><a href="{% url 'fights:fight_cart' %}">我的购物车</a></li>
+                <li><a href="{% url 'users:user_info' %}">我的设置</a></li>
+            </ul>
+        </div>
+        <div class="settings_con_hd" id="j-settings-con-hd">
+
+            <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+            <ul id="j-mycourselist-data-con" class="mycourse_ul clearfix">
+
+                {% for user_cours in user_courses.object_list %}
+
+                    <li class="tb">
+                        <a class="tb_link" href="{% if user_cours.is_fight %}{% url 'fights:fight_class' user_cours.id %}{% else %}{% url 'courses:course_detail' user_cours.id %}{% endif %}">
+                            <div class="mycourse_block_hd clearfix">
+
+                                <div class="lessonpic_hd">
+                                    <img src="{{ MEDIA_URL }}{{ user_cours.image }}" width="200"
+                                         height="116">
+                                </div>
+
+                                <div class="mycourse_info_hd">
+                                    <div class="myccourse_title">{{ user_cours.name }}</div>
+                                    <div class="mycourse_le_info_hd">
+                                                    <span class="myccourse_class_num">
+                                                        {{ user_cours.students }} 人
+                                                    </span>
+                                        <span class="myccourse_class_time">
+                                                               {{ user_cours.get_is_easy_display }}
+
+                                                    </span>
+                                        <span onclick="window.open('/live/30412.html'); return false;"
+                                              class="myccourse_info_title">
+
+                                                        </span>
+
+                                    </div>
+
+                                    <div>
+                                        {{ user_cours.abstract }}
+                                    </div>
+
+                                </div>
+
+                                <div class="more_hd">
+                                    <div class="more_icon j-more">
+                                    </div>
+                                    <div class="more_list_hd">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                {% endfor %}
+                <div style="text-align: center">
+                    <ul class="pagination" >
+                        {% if user_courses.has_previous %}
+
+                            <li><a href="?{{ user_courses.previous_page_number.querystring }}" class="prev">上一页</a></li>
+                        {% else %}
+                            <li class="disabled"><a>上一页</a></li>
+                        {% endif %}
+
+                        {% for page in user_courses.pages %}
+                            {% if page %}
+                                {% ifequal page user_courses.number %}
+                                    <li class="active"><a>{{ page }}</a></li>
+                                {% else %}
+                                    <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                                {% endifequal %}
+                            {% else %}
+                                ...
+                            {% endif %}
+                        {% endfor %}
+                        {% if user_courses.has_next %}
+                            <li><a href="?{{ user_courses.next_page_number.querystring }}" class="next">
+                                下一页</a></li>
+                        {% else %}
+                            <li class="disabled"><a>下一页</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}

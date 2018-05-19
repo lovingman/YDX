@@ -1,0 +1,77 @@
+/* Code tidied up by ScrapBook */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+:focus { outline: 0px none; }
+input, button, textarea, select { border: 0px none; }
+body { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(94, 94, 94); font: 14px/2em Microsoft YaHei,SimSun,Arial; }
+ol, ul { list-style: outside none none; }
+:link, :visited, ins { text-decoration: none; }
+a:link, a:visited { color: rgb(94, 94, 94); }
+a:hover { color: rgb(201, 57, 74); }
+a:active { color: rgb(102, 102, 102); }
+.clearfix::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix {  }
+a:focus { outline: 0px none; }
+input, textarea { outline: 0px none; }
+a:link, a:visited, body, html { color: rgb(28, 31, 33); }
+body, html { font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif; }
+body { overflow-y: scroll; min-width: 1200px; background-color: rgb(248, 250, 252); }
+a:active, a:hover { color: rgb(236, 21, 0); }
+.clearfix::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+#main { min-height: 750px; padding: 20px 0px; }
+a, button, input { outline: 0px none; }
+a:active {  }
+button::-moz-focus-inner { border: 0px none; }
+input::-moz-focus-inner { border: 0px none; }
+@media screen and (max-width: 1440px) {
+}
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 979px) {
+}
+@media screen and (max-width: 767px) {
+  body { padding-top: 0px; transition: transform 0.3s ease 0s; }
+  body::after { width: 100%; height: 100%; position: absolute; top: 0px; z-index: 1000; content: " "; display: block; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; transition: all 0.3s ease 0s; visibility: hidden; }
+}
+@media screen and (max-width: 480px) {
+}
+
+
+
+.article-item, .course-item, .wenda-item { box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.05); box-sizing: border-box; }
+.course-item, .course-item .course-item-detail, .wenda-item .wenda-item-detail .wenda-detail-wrap, .wenda-item .wenda-topic-detail { overflow: hidden; }
+.course-item { background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin-bottom: 8px; padding-top: 24px; padding-right: 32px; padding-bottom: 24px; }
+.course-item img { width: 210px; height: 120px; float: left; margin-left: 32px; margin-right: 32px; }
+.course-item .course-item-detail .highlight { color: red; }
+.course-item .course-item-detail a { font-size: 16px; line-height: 32px; font-weight: 700; }
+.course-item .course-item-detail .course-item-classify { margin-top: 4px; margin-bottom: 4px; }
+.course-item .course-item-detail .course-item-classify i { vertical-align: middle; }
+.course-item .course-item-detail .course-item-classify span { line-height: 24px; color: rgb(77, 85, 93); font-size: 12px; margin-right: 24px; padding-left: 2px; vertical-align: middle; }
+.course-item .course-item-detail p { color: rgb(77, 85, 93); font-size: 12px; line-height: 24px; }
+.course-item .course-item-detail .course-tname { line-height: 24px; font-weight: 500; color: rgb(77, 85, 93); font-size: 12px; margin-right: 4px; }
+.course-item .course-item-detail .course-tname:hover { color: rgb(240, 20, 20); }
+#main { padding-top: 0px; background: rgb(248, 250, 252) none repeat scroll 0% 0%; overflow: hidden; }
+.search-main { width: 100%; }
+.search-main, .search-main input { font-family: "Microsoft YaHei","Helvetica Neue","微软雅黑",Tahoma,Arial,sans-serif; }
+.search-main .search-header { height: 148px; width: 100%; background: rgb(217, 221, 225) none repeat scroll 0% 0%; padding-top: 36px; box-sizing: border-box; }
+.search-main .search-header .search-form { height: 48px; width: 840px; margin: 0px auto; border-radius: 4px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.1); position: relative; }
+.search-main .search-header .search-form .search-form-ipt { font-size: 16px; color: rgb(147, 153, 159); width: 684px; line-height: 48px; height: 48px; margin-left: 52px; float: left; }
+.search-main .search-header .search-form .search-form-btn { background: rgb(240, 20, 20) none repeat scroll 0% 0%; width: 104px; height: 48px; line-height: 48px; font-size: 16px; color: rgb(255, 255, 255); float: left; cursor: pointer; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.search-main .search-header .search-form .search-history-area { width: 736px; position: absolute; top: 48px; margin-top: 1px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; z-index: 100; box-sizing: border-box; box-shadow: 0px 8px 16px 0px rgba(7, 17, 27, 0.1); display: none; }
+.search-main .search-header .search-hot { margin: 0px auto; width: 840px; }
+.search-main .search-header .search-hot li { float: left; font-size: 12px; margin-top: 12px; margin-right: 24px; }
+.search-main .search-body { margin: 0px auto; width: 1150px; padding-top: 16px; box-sizing: border-box; }
+.search-main .search-body .search-content { float: left; width: 100%;}
+.search-main .search-body .search-content .search-classify { margin-bottom: 17px; height: 48px; position: relative; }
+.search-main .search-body .search-content .search-classify .search-classify-list { float: left; }
+.search-main .search-body .search-content .search-classify .search-classify-list li { float: left; margin-right: 48px; }
+.search-main .search-body .search-content .search-classify .search-classify-list li a { display: block; line-height: 48px; font-size: 14px; color: rgb(77, 85, 93); }
+.search-main .search-body .search-content .search-classify .search-classify-list .active { color: rgb(240, 20, 20); border-bottom: 2px solid rgb(240, 20, 20); }
+.search-main .search-body .search-content .search-classify .search-related { line-height: 48px; float: right; color: rgb(147, 153, 159); font-size: 12px; }
+.search-main .search-body .search-content .search-remind { font-size: 14px; color: rgb(147, 153, 159); line-height: 40px; }
+.notedata {
+    text-align: center;
+    color: #93999F;
+    margin-top: 136px;
+  font-size: 16px;
+}

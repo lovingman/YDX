@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block self_css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}" type="text/css">
+{% endblock%}
+{% block body_main %}
+<div id="main">
+
+    <div class="search-main">
+        <div class="search-header">
+            <form action="{% url 'courses:search' %}" method="post">
+            <div class="search-form">
+
+                <input class="search-form-ipt js-search-ipt" name="words" placeholder="请输入想搜索内容" type="text">
+                <input  type="submit" class="search-form-btn js-search-btn" id="search" value="搜索"/>
+
+            </div>
+                {% csrf_token %}
+                </form>
+
+        </div>
+
+        <div class="search-body">
+            <div class="search-content">
+                <div class="search-classify clearfix">
+                    <ul class="search-classify-list clearfix">
+
+                        <li><a href="{% url 'courses:search'  %}{% if words %}?words={{ words }} {% endif %}" class="{% ifequal sort ""%}active{% endifequal %}">全站</a></li>
+                        <li><a href="{% url 'courses:search'  %}{% if words %}?words={{ words }}&sort=free{% endif %}" class="{% ifequal sort "free"%}active{% endifequal %}">免费</a></li>
+
+                      <li><a href="{% url 'courses:search'  %}{% if words %}?words={{ words }}&sort=fight{% endif %}"class="{% ifequal sort "fight"%}active{% endifequal %}">实战</a></li>
+
+                    </ul>
+
+                    <span class="search-related">共找到 {{ nums }} 个相关内容</span>
+
+
+                </div>
+                {% if nums%}
+                {% for course in all_course %}
+                
+
+                {% if course.is_fight %}
+                <div class="course-item">
+                    <a href="{% url 'fights:fight_class' course.id%}" target="_blank" class="course-detail-title">
+
+                        <img src="{{MEDIA_URL  }}{{ course.image }}" class="course-item-img">
+                    </a>
+                      <div class="course-item-detail">
+                        <a href="{% url 'fights:fight_class' course.id%}" target="_blank" class="course-detail-title">
+                            <span class="highlight">{{ course.name }} </span>
+                        </a>
+                        <div class="course-item-classify">
+                            <span>实战</span>
+                            <span>讲师：
+                                                    <a class="course-tname" target="_blank"
+                                                       href="{% url 'teachers:teacher_detail'  course.teacher.id%}">{{ course.teacher.name }}</a>
+                                            </span>
+                            <span>
+                                {{ course.get_is_easy_dispaly }}
+                        					</span>
+                            <i class="course-study-number icon-set_sns"></i><span>{{ course.students }}人</span>
+                        </div>
+                        <p>{{ course.abstract }}</p>
+
+                    </div>
+                </div>
+                {% else %}
+
+                   <div class="course-item">
+                    <a href="{% url 'courses:course_detail' course.id%}" target="_blank" class="course-detail-title">
+                        <img src="{{MEDIA_URL  }}{{ course.image }}" class="course-item-img">
+                    </a>
+                           <div class="course-item-detail">
+                        <a href="{% url 'courses:course_detail' course.id%}" target="_blank" class="course-detail-title">
+                            <span class="highlight">{{ course.name }} </span>
+                        </a>
+                        <div class="course-item-classify">
+                            <span>实战</span>
+                            <span>讲师：
+                                                    <a class="course-tname" target="_blank"
+                                                       href="{% url 'teachers:teacher_detail'  course.teacher.id%}">{{ course.teacher.name }}</a>
+                                            </span>
+                            <span>
+                                {{ course.get_is_easy_dispaly }}
+                        					</span>
+                            <i class="course-study-number icon-set_sns"></i><span>{{ course.students }}人</span>
+                        </div>
+                        <p>{{ course.abstract }}</p>
+
+                    </div>
+                </div>
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                <p class="notedata">
+			      请在输入框输入想搜索的内容
+		       </p>
+
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+    {% block self_js %}
+
+    {% endblock %}
+{% endblock %}

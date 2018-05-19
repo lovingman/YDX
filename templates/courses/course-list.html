@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block self_css %}
+    <link rel="stylesheet" href="{% static  'css/ydx-courselist.css' %}">
+    <style>
+    .page {
+    margin: 25px 0 auto;
+    overflow: hidden;
+    clear: both;
+    text-align: center;
+}
+.page span, .page-disabled {
+    height: 32px;
+    color: #c8cdd2;
+}
+    .page a {
+    padding: 0 4px;
+    min-width: 24px;
+    line-height: 32px;
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+    </style>
+
+{% endblock %}
+
+{% block body_main %}
+
+
+        <div id="main">
+            <div class="wrap ">
+                <div class="top">
+                    <div class="course-content">
+                        <div class="course-nav-box">
+                            <div class="course-nav-row clearfix">
+                                <span class="hd l"> 方向： </span>
+                                <div class="bd">
+                                    <script>
+                                        $(function () {
+                                            $(".fx>li").click(function () {
+                                                $(this).addClass("on").siblings('li').removeClass("on");
+                                            });
+                                        });
+                                    </script>
+                                    <ul class="fx">
+
+                                        <li class="course-nav-item {% ifequal category_code ''%}on{% endifequal %}"><a href="?"> 全部 </a></li>
+
+                                        {% for category in category_type1 %}
+
+                                            <li class="course-nav-item
+                                    {% ifequal category.code category_code %}on{% endifequal %}
+                                      {% ifequal category parent_code %}on{% endifequal %}
+
+">
+                                                <a class="" href="?category_code={{ category.code }}"
+                                                   data-ct="fe"> {{ category }} </a></li>
+
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="course-nav-row clearfix">
+                                <span class="hd l"> 分类： </span>
+                                <div class="bd">
+                                    <ul class="">
+                                        <li class="course-nav-item {% if parent_code %} {% else %}on{% endif %}"><a href="?category_code={% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}">
+                                            全部 </a></li>
+                                        {% for category2 in category_type2 %}
+                                            <li class="course-nav-item  {% ifequal category2.code category_code %}on{% endifequal %}">
+                                                <a href="?category_code={{ category2.code }}{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}">{{ category2 }} </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="course-nav-row clearfix border_bottom_none">
+                                <span class="hd l"> 类型： </span>
+                                <div class="bd">
+                                    <ul class="">
+                                        <li class="course-nav-item {% ifequal type "" %}on{% endifequal %}">
+                                            <a href="?type={% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}">
+                                            全部 </a></li>
+                                    <li class="course-nav-item {% ifequal type "1" %}on{% endifequal %}">
+                                                <a href="?type=1{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}"> 基础</a>
+                                            </li>
+                                    <li class="course-nav-item {% ifequal type "2" %}on{% endifequal %}">
+                                                <a href="?type=2{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}"> 案例</a>
+                                            </li>
+
+                                   <li class="course-nav-item {% ifequal type "3" %}on{% endifequal %}">
+                                                <a href="?type=3{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}">架构</a>
+                                            </li>
+                                        <li class="course-nav-item {% ifequal type "4" %}on{% endifequal %}">
+                                                <a href="?type=4{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal sort "" %}&amp;sort={{ sort }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}"> 工具</a>
+                                            </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="course-tool-bar clearfix">
+                    <div class="tool-left l">
+
+                        <a href="?sort=last{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal sort "last" %}active{% endifequal %}"> 最新 </a>
+                        <a href="?sort=pop{% ifnotequal is_easy "" %}&amp;is_easy={{ is_easy }}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal sort "pop" %}active{% endifequal %}"> 最热 </a>
+                    </div>
+                    <div class="tool-left r">
+                        <strong class="easy"> 难度: </strong>
+                        <a href="?is_easy={% ifnotequal sort "" %}&amp;sort={{ sort}}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal is_easy "" %}active{% endifequal %}"> 全部 </a>
+                        <a href="?is_easy=cj{% ifnotequal sort "" %}&amp;sort={{ sort}}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal is_easy "cj" %}active{% endifequal %}"> 初级 </a>
+                        <a href="?is_easy=zj{% ifnotequal sort "" %}&amp;sort={{ sort}}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal is_easy "zj" %}active{% endifequal %}"> 中级 </a>
+                        <a href="?is_easy=gj{% ifnotequal sort "" %}&amp;sort={{ sort}}{% endifnotequal %}{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}{% ifnotequal type "" %}&amp;type={{ type }}{% endifnotequal %}" class="sort-item {% ifequal is_easy "gj" %}active{% endifequal %}"> 高级 </a>
+                        <span> 共 <b class="pager-cur"> {{ count }} </b> 个课程 </span>
+                    </div>
+                </div>
+                <div class="course-list" style="height: 400px;">
+                    <div class="moco-course-list">
+                        <ul class="clearfix">
+                            {% for course in courses.object_list %}
+                                <div class="course-card-container">
+
+                                    <a target="_blank" href="{% url 'courses:course_detail' course.id %}" class="course-card">
+                                        <div class="course-card-top">
+                                            <img class="course-banner lazy"
+                                                 data-original="http://img.mukewang.com/5991489e00019f5c06000338-240-135.jpg"
+                                                 src="{{ MEDIA_URL }}{{ course.image }}" style="display: inline;"/>
+                                            <div class="course-label">
+                                                <label> {{ course.tag }} </label>
+                                            </div>
+                                        </div>
+                                        <div class="course-card-content">
+                                            <h3 class="course-card-name"> {{ course.name }} </h3>
+                                            <div class="clearfix course-card-bottom">
+                                                <div class="course-card-info">
+                                                    <span> {{ course.get_is_easy_display }} </span>
+                                                    <span> {{ course.students }}人{{ course.get_course_type_display }} </span>
+                                                </div>
+                                                <p class="course-card-desc"> {{ course.abstract }} </p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                 <!-- 分页器 -->
+               {% load i18n %}
+                    <div class="page">
+                        {% if courses.has_previous %}
+                         <span class="disabled_page"><a href="?{{ courses.previous_page_number.querystring }}" class="prev">上一页</a></span>
+                        {% endif %}
+                        {% for page in courses.pages %}
+                            {% if page %}
+                                {% ifequal page courses.number %}
+                                    <span class="current page">{{ page }}</span>
+                                {% else %}
+                                    <a  href="?{{ page.querystring }}">{{ page }}</a>
+                                {% endifequal %}
+                            {% else %}
+                                ...
+                            {% endif %}
+                        {% endfor %}
+                        {% if courses.has_next %}
+                            <a href="?{{courses.next_page_number.querystring }}" class="next">
+                                下一页</a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+
+        </div>
+        <!-- 返回顶部 -->
+
+    </div>
+{% endblock %}

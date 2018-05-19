@@ -1,0 +1,146 @@
+{% extends 'accountcenter/accountcenter-base.html' %}
+{% block self_css %}
+    <style>
+        .page {
+            margin: 25px 0 auto;
+            overflow: hidden;
+            clear: both;
+            text-align: center;
+        }
+
+        .page span, .page-disabled {
+            height: 32px;
+            color: #c8cdd2;
+        }
+
+        .page a {
+            padding: 0 4px;
+            min-width: 24px;
+            line-height: 32px;
+            font-size: 18px;
+            display: inline-block;
+            text-align: center;
+        }
+
+
+    </style>
+
+{% endblock %}
+{% block main_body %}
+    <div class="course_container center_main_con clearfix">
+        <div class="left_nav">
+
+            <ul class="">
+
+                <li class="select"><a href="{% url 'users:info_courses' %}">我的课程</a></li>
+                <li><a href="{% url 'users:info_myfav' %}">我的收藏</a></li>
+
+                <li><a href="{% url 'users:fav_teacher' %}">我的老师</a></li>
+
+                <li><a href="{% url 'fights:fight_cart' %}">我的购物车</a></li>
+                <li><a href="{% url 'users:user_info' %}">我的设置</a></li>
+            </ul>
+        </div>
+        <div class="settings_con_hd" id="j-settings-con-hd">
+
+
+            <ul id="j-mycourselist-data-con" class="mycourse_ul clearfix">
+                <li>
+                    <ul class="nav nav-pills" style="background: #fff;margin-bottom: 20px;" >
+                        <li role="presentation" class="{% ifequal category "" %}active{% endifequal %}"><a href="{% url "users:info_courses" %}?category=">全部</a></li>
+                        <li role="presentation" class="{% ifequal category 'free' %}active{% endifequal %}"><a href="{% url "users:info_courses" %}?category=free">免费</a></li>
+                        <li role="presentation" class="{% ifequal category 'fight' %}active{% endifequal %}"><a href="{% url "users:info_courses" %}?category=fight">实战</a></li>
+                    </ul>
+                </li>
+                {% for cours in all_courses.object_list %}
+
+                    <li class="tb">
+                        <a style="display: block" href="{% url 'courses:course_detail' cours.id %}">
+                            <div class="tb_link">
+                                <div class="mycourse_block_hd clearfix">
+
+                                    <div class="lessonpic_hd">
+                                        <img src="{{ MEDIA_URL }}{{ cours.image }}" width="200"
+                                             height="116">
+                                    </div>
+
+                                    <div class="mycourse_info_hd">
+                                        <div class="myccourse_title">{{ cours.name }}</div>
+                                        <div class="mycourse_le_info_hd">
+                                                    <span class="myccourse_class_num">
+                                                        {{ cours.students }} 人
+                                                    </span>
+                                            <span class="myccourse_class_time">
+                                                               {{ cours.get_is_easy_display }}
+
+                                                    </span>
+                                            <span onclick="window.open('/live/30412.html'); return false;"
+                                                  class="myccourse_info_title">
+
+                                                        </span>
+
+                                        </div>
+
+                                        <div>
+                                            {{ cours.abstract }}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="more_hd">
+                                        <div class="more_icon j-more">
+                                        </div>
+                                        <div class="more_list_hd">
+                                            <div class="remove_btn" id='remove_btn' style="z-index: 10000"><a
+                                                    href="{% url 'users:course_delete' cours.id %}">删除课程</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                {% endfor %}
+                <div style="text-align: center">
+                <ul class="pagination" style="">
+                    {% if all_courses.has_previous %}
+
+                        <li><a href="?{{ all_courses.previous_page_number.querystring }}" class="prev">上一页</a></li>
+                    {% else %}
+                        <li class="disabled"><a>上一页</a></li>
+                    {% endif %}
+
+                    {% for page in all_courses.pages %}
+                        {% if page %}
+                            {% ifequal page all_courses.number %}
+                                <li class="active"><a>{{ page }}</a></li>
+                            {% else %}
+                                <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                            {% endifequal %}
+                        {% else %}
+                            ...
+                        {% endif %}
+                    {% endfor %}
+                    {% if all_courses.has_next %}
+                        <li><a href="?{{ all_courses.next_page_number.querystring }}" class="next">
+                            下一页</a></li>
+                    {% else %}
+                        <li class="disabled"><a>下一页</a></li>
+                    {% endif %}
+                </ul>
+</div>
+            </ul>
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+<!-- 内容开始 -->
+
+        
+

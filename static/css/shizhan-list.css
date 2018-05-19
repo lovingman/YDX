@@ -1,0 +1,163 @@
+/* Code tidied up by ScrapBook */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+:focus { outline: 0px none; }
+body { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(94, 94, 94); font: 14px/2em Microsoft YaHei,SimSun,Arial; }
+:link, :visited, ins { text-decoration: none; }
+a:link, a:visited { color: rgb(94, 94, 94); }
+a:hover { color: rgb(201, 57, 74); }
+a:active { color: rgb(102, 102, 102); }
+.clearfix::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix {  }
+.l { float: left; }
+.r { float: right; }
+a:focus { outline: medium none; }
+html { font-family: sans-serif; }
+a { background-color: transparent; }
+a:focus, a:active, a:hover { outline: 0px none; }
+@media screen and (max-width: 480px) {
+}
+@font-face {
+  font-family: "sz";
+  font-style: normal;
+  font-weight: normal;
+}
+[class^="sz-"], [class*=" sz-"] { font-family: "sz" !important; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; }
+.sz-star::before { content: ""; }
+@font-face {
+  font-family: "imv2";
+  font-style: normal;
+  font-weight: normal;
+
+}
+[class^="imv2-"], [class*=" imv2-"] { font-family: "imv2" !important; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; }
+.imv2-set-sns::before { content: ""; }
+.imv2-star::before { content: ""; }
+.w { width: 1200px; margin: 0px auto; }
+html, html, body { color: rgb(20, 25, 30); }
+body { font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif; background-color: rgb(255, 255, 255); min-width: 1200px; overflow-y: scroll; position: relative; }
+a:link, a:visited { color: rgb(20, 25, 30); }
+a:hover, a:active { color: rgb(240, 20, 0); }
+.clearfix::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix {  }
+.l { float: left; }
+.r { float: right; }
+#header { background: rgb(7, 17, 27) none repeat scroll 0% 0%; }
+.page { margin: 25px 0px auto; overflow: hidden; clear: both; text-align: center; }
+.page a { display: inline-block; margin: 0px 12px; width: 36px; height: 36px; line-height: 36px; font-size: 14px; color: rgb(77, 85, 93); text-align: center; border-radius: 50%; transition: border-color 0.2s ease 0s; }
+.page a:hover { text-decoration: none; background-color: rgb(217, 221, 225); }
+.page a.active { background: rgb(77, 85, 93) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+/*.page a:first-child, .page a:nth-child(2), .page a:nth-last-child(2), .page a:last-child { width: auto; }*/
+.page a:first-child:hover, .page a:nth-child(2):hover, .page a:nth-last-child(2):hover, .page a:last-child:hover { background-color: transparent; }
+.page span, .page-disabled { display: inline-block; padding: 0px 12px; min-width: 20px; height: 39px; line-height: 39px; font-size: 14px; color: rgb(147, 153, 159); text-align: center; }
+a { outline: medium none; }
+a:active {  }
+a, input, button { outline: medium none; }
+body { padding-top: 0px; transition: transform 0.3s ease 0s; }
+body::after { width: 100%; height: 100%; position: absolute; top: 0px; z-index: 1000; content: " "; display: block; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; transition: all 0.3s ease 0s; visibility: hidden; }
+@media screen and (max-width: 1440px) {
+}
+@media screen and (max-width: 1330px) {
+}
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 979px) {
+}
+@media screen and (max-width: 820px) {
+}
+@font-face {
+  font-family: "dincondm";
+  font-style: normal;
+  src: url("about:blank");
+}
+body { background: rgb(248, 250, 252) none repeat scroll 0% 0%; }
+.top-wrap-box { position: relative; width: 100%; box-sizing: border-box; margin-top: 48px; }
+.banner-bg-box { position: relative; width: 1152px; margin: 0px auto; }
+.banner-bg-box .banner-item { display: block; width: 567px; height: 108px; border-radius: 8px; background-size: cover; box-shadow: 0px 8px 16px rgba(7, 17, 27, 0.1); }
+.index-main { width: 100%; max-width: 1152px; position: relative; padding-bottom: 70px; }
+.screening-box { position: relative; width: 100%; padding: 20px 12px; box-sizing: border-box; }
+.screening-box .screening-time a { float: left; padding: 4px 12px; font-size: 12px; line-height: 16px; color: rgb(77, 85, 93); height: 16px; margin-right: 12px; border-radius: 12px; }
+.screening-box .screening-time a:hover { color: rgb(7, 17, 27); }
+.screening-box .screening-time a.on { background: rgb(147, 153, 159) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.screening-box .screenjing-type .my-collect { float: left; font-size: 12px; color: rgb(77, 85, 93); height: 24px; line-height: 24px; padding: 0px 12px; border-radius: 12px; margin-left: 14px; }
+.screening-box .screenjing-type .my-collect:hover { color: rgb(7, 17, 27); }
+.index-list-wrap { width: 100%; margin: 0px auto; }
+.index-list-wrap .shizhan-course-list { width: 1252px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap { position: relative; margin-right: 24px; margin-bottom: 36px; width: 270px; height: 336px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap a { display: block; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap a:hover .img-box { box-shadow: 0px 8px 16px 0px rgba(7, 17, 27, 0.1); border-radius: 10px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap a:hover .shizan-desc { color: rgb(77, 85, 93) !important; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap a:hover .shizhan-info { color: rgb(77, 85, 93) !important; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap a:hover .shizhan-info .imv2-set-sns { color: rgb(77, 85, 93) !important; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box { position: relative; width: 100%; height: 100%; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .img-box { height: 148px; max-height: 148px; transition: all 0.3s linear 0s; position: relative; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .img-box img { width: 100%; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .lecturer-info { position: absolute; left: 16px; right: 16px; bottom: 16px; height: 36px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .lecturer-info img { float: left; width: 36px; height: 36px; border-radius: 50%; margin-right: 12px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .lecturer-info span { float: left; padding-top: 18px; font-size: 14px; color: rgb(255, 255, 255); line-height: 18px; text-shadow: 0px 2px 4px rgba(7, 17, 27, 0.5); font-weight: 700; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-course-gradient { position: absolute; z-index: 0; background-image: linear-gradient(-180deg, rgba(7, 17, 27, 0) 0%, rgba(7, 17, 27, 0.6) 97%); border-radius: 12px; left: 0px; bottom: 0px; right: 0px; height: 74px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-course-img { border-radius: 10px; height: 148px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box { position: relative; width: 248px; padding: 0px 12px; min-height: 112px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizan-name { font-size: 16px; line-height: 24px; font-weight: 700; max-height: 48px; margin-top: 16px; transition: all 0.3s linear 0s; word-break: break-all; overflow-wrap: break-word; overflow: hidden; display: -webkit-box; -moz-box-orient: vertical; color: rgb(43, 51, 59); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizan-name:hover { color: rgb(7, 17, 27); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizan-desc { margin-top: 4px; font-size: 12px; color: rgb(147, 153, 159); max-height: 48px; line-height: 24px; word-break: break-all; overflow-wrap: break-word; overflow: hidden; transition: all 0.3s linear 0s; display: -webkit-box; -moz-box-orient: vertical; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info { font-size: 12px; line-height: 20px; color: rgb(147, 153, 159); transition: all 0.3s linear 0s; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info .imv2-set-sns { font-size: 12px; margin-right: 2px; color: rgb(147, 153, 159); transition: all 0.3s linear 0s; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info .grade { margin-right: 12px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box { position: relative; margin-top: 4px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box:hover .evaluation-desc-box { display: block; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .stars { font-size: 12px; line-height: 24px; color: rgba(255, 153, 0, 0.2); margin-right: 0px; margin-left: 12px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .stars .on { color: rgb(255, 153, 0); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box { display: none; position: absolute; top: 30px; width: 246px; padding: 16px 0px; background: rgb(255, 153, 0) none repeat scroll 0% 0%; border-radius: 4px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .trangle { position: absolute; top: -6px; left: 118px; width: 0px; height: 0px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid rgb(255, 153, 0); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box p { font-size: 12px; line-height: 12px; color: rgb(255, 255, 255); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .left-box { width: 126px; text-align: center; border-right: 1px solid rgba(255, 255, 255, 0.4); box-sizing: border-box; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .left-box .big-text { font-size: 20px; line-height: 20px; margin: 4px 0px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .right-box { width: 120px; text-align: center; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .right-box span { margin-left: 4px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .evaluation-box .evaluation-desc-box .right-box p:nth-child(2) { margin: 8px 0px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .course-card-price { font-size: 12px; color: rgb(77, 85, 93); line-height: 20px; margin-top: 8px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom { padding: 8px 0px 4px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .course-card-price, .index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .cost-price { float: left; font-size: 12px; color: rgb(77, 85, 93); line-height: 24px; margin-top: 0px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .bot-discount { padding-top: 4px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom span, .index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom i { float: left; color: rgb(183, 187, 191); line-height: 24px; font-size: 12px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .collect { float: left; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .collect:hover i, .index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .collect:hover span { color: rgb(77, 85, 93); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom i { font-size: 16px; margin-right: 2px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .line { width: 2px; height: 12px; background: rgb(217, 221, 225) none repeat scroll 0% 0%; margin: 6px 16px 0px; }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .collect:hover, .index-list-wrap .shizhan-course-list .shizhan-course-wrap .shizhan-course-box .shizhan-intro-box .shizhan-info-bottom .acart:hover { color: rgb(77, 85, 93); }
+.index-list-wrap .shizhan-course-list .shizhan-course-wrap.nomr { margin-right: 0px; }
+.page { margin-top: 0px; padding: 25px 0px 0px; }
+@media not all {
+}
+@media screen {
+}
+@media screen and (min-width: 800px) {
+  body { min-width: 1200px; }
+}
+@media screen and (max-width: 800px) {
+  body { min-width: 800px; }
+  .index-list-wrap { margin: 0px 10px; }
+}
+.shizhan-header .shizhan-header-wrap { width: 1152px; margin-left: auto; margin-right: auto; }
+.shizhan-header .header-icon2 { float: left; width: 240px; height: 108px; margin-left: 24px; margin-top: 12px; }
+.shizhan-header .header-icon1 { float: left; width: 196px; height: 64px; overflow: hidden; margin-top: 34px; }
+.shizhan-header .header-icon1 img { width: 100%; height: 100%; }
+.shizhan-header-nav { height: 72px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0px 8px 16px 0px rgba(28, 31, 33, 0.1); padding: 16px 0px; box-sizing: border-box; }
+.shizhan-header-nav > div { width: 1152px; padding-left: 12px; box-sizing: border-box; margin-left: auto; margin-right: auto; }
+.shizhan-header-nav a { float: left; font-size: 16px; color: rgb(7, 17, 27); line-height: 40px; height: 40px; position: relative; margin-right: 48px; font-weight: bold; }
+.shizhan-header-nav a:last-child { margin-right: 0px; }
+.shizhan-header-nav a:hover { color: rgb(240, 20, 20); }
+.shizhan-header-nav a.cur { color: rgb(240, 20, 20); }
+.shizhan-header-nav a.cur::before { display: block; }
+.shizhan-header-nav a::before { display: none; content: " "; position: absolute; bottom: 0px; background: rgb(240, 20, 20) none repeat scroll 0% 0%; width: 16px; height: 3px; left: 50%; margin-left: -8px; }
+.shizhan-skill { width: 1152px; margin: 0px auto; padding: 24px 0px 10px; border-bottom: 1px solid rgb(217, 221, 225); }
+.shizhan-skill a { float: left; margin-right: 20px; padding: 0px 12px; font-size: 14px; color: rgb(77, 85, 93); line-height: 32px; border-radius: 16px; margin-bottom: 12px; }
+.shizhan-skill a:last-child { margin-right: 0px; }
+.shizhan-skill a:hover { background: rgb(217, 221, 225) none repeat scroll 0% 0%; }
+.shizhan-skill a.on { color: rgb(255, 255, 255); background: rgb(43, 51, 59) none repeat scroll 0% 0%; }
+@media (min-width: 1600px) {
+  .shizhan-skill, .index-main, .index-list-wrap .shizhan-course-list, .shizhan-header .shizhan-header-wrap, .shizhan-header-nav > div { width: 1446px; max-width: 1446px; }
+  .shizhan-course-wrap:nth-child(4n) { margin-right: 24px !important; }
+  .shizhan-course-wrap:nth-child(5n) { margin-right: 0px !important; }
+}

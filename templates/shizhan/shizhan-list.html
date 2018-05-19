@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block self_css %}
+    <link href="{% static 'css/shizhan-list.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+{% block self_js %}
+    <script type="text/javascript">
+
+        //加入购物车
+        function addcart(current_elem, fight_id) {
+
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "fights:fight_addcart" %}",
+                data: {'fight_id': fight_id},
+                async: true,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (data) {
+                    if (data.status == 'fail') {
+                        if (data.msg == '用户未登录') {
+                            window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                        } else {
+                        }
+                    } else if (data.status == 'success') {
+                         alert("已经成功加入购物车")
+                         window.location.href = "{% url 'fights:fight_list' %}";
+                    }
+                },
+            });
+        }
+
+        //收藏分享
+        function add_fav(current_elem, fav_id, fav_type) {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "courses:addfav_course" %}",
+                data: {'fav_id': fav_id, 'fav_type': fav_type},
+                async: true,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (data) {
+                    if (data.status == 'fail') {
+                        if (data.msg == '用户未登录') {
+                            window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                        } else {
+                            alert(data.msg)
+                        }
+
+                    } else if (data.status == 'success') {
+                      alert("已经收场")
+                    }
+                },
+            });
+        }
+
+
+    </script>
+
+{% endblock %}
+
+{% block body_main %}
+
+
+    <!-- 类别 -->
+    <div class="shizhan-header-nav">
+        <div class="clearfix">
+            <a href="?category_code=" id="cato" class="{% ifequal category_code '' %}cur{% endifequal %}">全部</a>
+            {% for category in category_type1 %}
+
+                <a href="?category_code={{ category.code }}"
+                   class="{% ifequal category.code category_code %}cur{% endifequal %}
+                {% ifequal category parent_code %}cur{% endifequal %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- 类别 end -->
+
+    <div class="shizhan-skill clearfix">
+        <a href="?category_code=" class="{% if parent_code %} {% else %}on{% endif %}">不限</a>
+        {% for category2 in category_type2 %}
+
+            <a href="?category_code={{ category2.code }}"
+               class="{% ifequal category2.code category_code %}on{% endifequal %}">{{ category2 }}</a>
+        {% endfor %}
+
+
+    </div>
+
+
+    <!--课程列表-->
+    <div class="w index-main">
+
+        <div class="screening-box clearfix">
+            <div class="screening-time l clearfix">
+                <a href="?sort={% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}" class="{% ifequal sort '' %}on{% endifequal %}">默认排序</a>
+                <a href="?sort=pop{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}" class="{% ifequal sort 'pop' %}on{% endifequal %}">最新</a>
+                <a href="?sort=last{% ifnotequal category_code "" %}&amp;category_code={{ category_code }}{% endifnotequal %}" class="{% ifequal sort 'last' %}on{% endifequal %}">销量</a>
+
+            </div>
+            <!-- 判断登录 && 并且购买过实战课程 -->
+        </div>
+
+
+        <div class="index-list-wrap">
+            <div class="shizhan-course-list clearfix">
+                {% for cours in courses.object_list %}
+
+                    <div class="shizhan-course-wrap l ">
+                        <a style="text-decoration: none" href="{% url "fights:fight_class" cours.id %}">
+                            <div class="shizhan-course-box">
+                                <!-- 学习进度 -->
+                                <div class="box">
+                                    <div class="img-box">
+                                        <div class="shizhan-course-gradient"></div>
+                                        <img class="shizhan-course-img" alt="ZooKeeper分布式专题与Dubbo微服务入门"
+                                             src="{{ MEDIA_URL }}{{ cours.image }}">
+                                        <div class="lecturer-info">
+                                            <img class="shizhan-course-img" alt="风间影月"
+                                                 src="{{ MEDIA_URL }}{{ cours.teacher.image }}">
+                                            <span>{{ cours.teacher.name }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="shizhan-intro-box">
+                                        <p class="shizan-name" title="ZooKeeper分布式专题与Dubbo微服务入门">{{ cours.name }}</p>
+                                        <div class="evaluation-box">
+                                            <div class="shizhan-info">
+                                                <span class="grade">{{ cours.get_is_easy_display }}</span>
+                                                <span>{{ cours.students }}</span>
+                                                <span class="stars"></span>
+                                            </div>
+
+                                        </div>
+                                        <p class="shizan-desc" title="{{ cours.desc }}">{{ cours.desc }}</p>
+</a>
+                                        <div class="shizhan-info-bottom">
+
+                                            <div class="clearfix">
+
+                                                <div class="course-card-price">￥{{ cours.price }}  </div>
+
+                                                <div class="r clearfix">
+                                                    <div class="collect clearfix js-course-collect" data-type="0"
+                                                         data-cid="201">
+
+
+                                                        <span id="fav{{ cours.id }}">收藏</span>
+                                                         <script>
+                                                              $(document).ready(function () {
+                                                         $('#fav{{ cours.id }}').on('click', function () {
+                                                             add_fav($(this), {{ cours.id }},1);
+                                                         }); });
+                                                         </script>
+                                                    </div>
+                                                    <span class="line"></span>
+                                                     <script>
+                                                          $(document).ready(function () {
+                                                         $('#add-cart{{ cours.id }}').on('click', function () {
+                                                             addcart($(this), {{ cours.id }});
+                                                         }); });
+                                                     </script>
+                                                    {% if cours in fights %}
+                                                        <span style="color: red">已经购买</span>
+                                                        {% else %}
+                                                    <span class="acart js-course-acart" id="add-cart{{ cours.id }}" data-fid="{{ cours.id }}"
+                                                       style="text-decoration: none;cursor: pointer;">加购物车</span>
+                                                    {% endif %}
+
+                                                </div>
+                                            </div>
+
+                                            <div class="bot-discount clearfix">
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+
+
+            <div class="page">
+                {% if courses.has_previous %}
+                    <span class="disabled_page"><a style="width: 46px;"
+                                                   href="?{{ courses.previous_page_number.querystring }} ">上一页</a></span>
+                {% else %}
+                    <span class="disabled_page">上一页</span>
+                {% endif %}
+                {% for page in courses.pages %}
+                    {% if page %}
+                        {% ifequal page courses.number %}
+                            <a style="display: none" class="active"> das</a>
+                            <a class="active">{{ page }}</a>
+
+                        {% else %}
+                            <a style="display: none" class="active"> das</a>
+                            <a href="?{{ page.querystring }}">{{ page }}</a>
+                        {% endifequal %}
+                    {% else %}
+
+                    {% endif %}
+                {% endfor %}
+
+                {% if courses.has_next %}
+                    <a href="?{{ courses.next_page_number.querystring }}" style="width: 46px;">下一页</a>
+                {% else %}
+                    <span class="disabled next">下一页</span>
+                {% endif %}
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 课程列表end -->
+{% endblock %}

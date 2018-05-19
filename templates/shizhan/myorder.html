@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title> 我的订单</title>
+
+{% endblock %}
+{% block self_css %}
+
+    <link href="{% static 'css/myorder.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/shizhan.min.css' %}" rel="stylesheet"/>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}
+{% block body_main %}
+
+    <div class="body-main">
+
+        <div class="order-main clearfix">
+            <div class="slider l">
+                <h1 style="font-size: 18px">订单中心</h1>
+                <ul class="nav-menu">
+                    <a href="{% url 'fights:myorder' %}">
+                        <li class="clearfix {% ifequal type '' %}active{% endifequal %}">
+                            <p class="nav-name l">全部订单</p>
+
+                        </li>
+                    </a>
+                    <a href="{% url 'fights:myorder' %}?type=2">
+                        <li class="clearfix {% ifequal type '2' %}active{% endifequal %}">
+                            <p class="nav-name l">未支付</p>
+
+                        </li>
+                    </a>
+                    <a href="{% url 'fights:myorder' %}?type=1">
+                        <li class="clearfix {% ifequal type '1' %}active{% endifequal %}">
+                            <p class="nav-name l">已支付</p>
+
+                        </li>
+                    </a>
+
+                </ul>
+            </div>
+            <div class="right-container l">
+
+
+                <div class="myOrder">
+
+                    <ul class="myOrder-list">
+                        {% for details in order_details %}
+                            {% for detail in details %}
+                                <li data-flag="1804040757431931">
+                                    <p class="myOrder-number">
+                                        订单编号：{{ detail.order.order_id }}
+                                        <span class="date">{{ detail.order.add_date }}</span>
+                                        <a target="_blank" class="r">我要反馈</a>
+                                    </p>
+                                    <div class="myOrder-course clearfix">
+                                        <dl class="course-del l">
+                                            <dd class="clearfix">
+                                                <a href="https://class.imooc.com/sc/18" class="l">
+                                                    <img class="l" src="{{ MEDIA_URL }}{{ detail.course.image }}"
+                                                         width="160"
+                                                         height="90">
+                                                </a>
+                                                <div class="del-box l">
+                                                    <!-- type为类型 1实战购买 2实战续费 4职业路径购买 5职业路径续费 -->
+
+                                                    <a href="{% url 'fights:fight_class' detail.course.id %}"><p class="course-name">
+                                                        {{ detail.course.name }}</p>
+                                                    </a>
+
+                                                    <p class="course-desc">{{ detail.course.abstract }}</p>
+
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <!-- 没有使用优惠券 -->
+                                        <div class="course-money l pt36">
+                                            <div class="total-box">
+                                                <p class="type-price">
+                                                    <span class="RMB">¥</span>{{ detail.course.price }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="course-action l">
+                                            {% ifequal detail.order.is_pay "TRADE_SUCCESS"%}
+                                                <span class="pay-now" >已经支付</span>
+
+                                            {% else %}
+                                            <a class="pay-now" href="{% url 'fights:fight_gopay' detail.order.order_id %}">立即支付</a>
+                                            <a class="order-cancel" id="order-cancel{{ detail.order.order_id }}"
+                                               data-toggle="modal" data-target="#myodercancel">取消订单</a>
+                                            {% endifequal %}
+                                            <script>
+                                                $(document).ready(function () {
+                                                $(function () {
+                                                    $("#order-cancel{{ detail.order.order_id }}").click(function () {
+                                                        $("#order-id").val("{{ detail.order.order_id }}")
+                                                    });
+                                                });});
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myodercancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            取消订单
+                        </h4>
+                    </div>
+                      <form method="post" action="{% url 'fights:myorder' %}">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <input name="order_id" id="order-id" style="display: none" value=""/>
+                        <input type="submit" class="btn btn-primary" value=" 确认取消"/>
+                        {% csrf_token %}
+
+                    </div>
+                   </form>
+                </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

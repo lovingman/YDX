@@ -1,0 +1,136 @@
+.well .list-group-item{
+	border: none;
+	color: black;
+	/* border-top: 1px  dashed #ddd;
+	*/
+    padding-left:30px;
+    background: #383E60;
+    color: #747c9a;
+  
+}
+.well .list-group-item:hover{
+    
+   /* color: #FFF;*/
+    /*background: #383E60;*/
+}
+.well .list-group-item:first-child{
+	border-top: none;
+}
+div>.course-lists{
+	position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    color: black;
+    background: #383E60;
+    text-decoration:none;
+    color: #fff;
+    border-bottom:0.3px solid #282e4b;
+    border-top:0.3px solid #282e4b;
+}
+/*.course-lists:hover{
+     background: #d2eff7;
+    
+}*/
+
+.well{
+   
+    display: block;
+	margin-bottom: 0px;
+	padding: 0px;
+	border: none;
+}
+div>.list-group{
+	margin-bottom: 0px;
+	border: none;
+	 background: #383E60;
+}
+
+.video-play-top{
+   line-height: 74px;
+   text-align: center;
+   color: #333;
+   font-size: 21px;
+   font-weight: 700;
+}
+.video-play-top .fl {
+    width: 24px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+    float: left;
+    margin-right: : 25px;
+    margin-top: 25px;
+}
+.video-play-top .fr {
+    width: 24px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+    float: right;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+.video-play-top .ct-con {
+    display: inline-block;
+    max-width: 350px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    width: 65%;
+    display: inline-block;
+}
+.glyphicon{
+	    float:right;
+	    margin-top: 2px;
+}
+.row {
+margin: 0px;
+}
+.col-md-4{
+    width: 330px;
+	height: 580px;
+    background: #383E60;
+    overflow:auto;
+}
+.col-md-8{
+
+  width: 1010px;
+}
+.video-play{
+	display: block;
+	text-align: center;
+	
+}
+#my_video_1{
+	
+	margin: auto;
+}
+.mycenter{
+    
+}
+.change{
+	width: 100%;
+	margin: auto,auto;
+}
+.modal{
+	top:200px;
+	left: 100px;
+}
+ .video-js .vjs-control-bar { 
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+  }
+  .video-js .vjs-big-play-button{
+  	display: none;
+  }
+
+.video-js.vjs-fluid, .video-js.vjs-16-9, .video-js.vjs-4-3{
+	height: 500px;
+}

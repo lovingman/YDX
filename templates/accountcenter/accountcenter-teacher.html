@@ -1,0 +1,54 @@
+{% extends 'accountcenter/accountcenter-base.html' %}
+{% load staticfiles %}
+{% block self_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ydx-follows.css' %}">
+{% endblock %}
+{% block main_body %}
+    <!-- 内容开始 -->
+    <div class="course_container center_main_con clearfix">
+        <div class="left_nav">
+
+            <ul class="">
+
+                <li><a href="{% url 'users:info_courses' %}">我的课程</a></li>
+                <li><a href="{% url 'users:info_myfav' %}">我的收藏</a></li>
+
+                <li class="select"><a href="{% url 'users:fav_teacher' %}">我的老师</a></li>
+
+ <li><a href="{% url 'fights:fight_cart' %}">我的购物车</a></li>
+                <li><a href="{% url 'users:user_info' %}">我的设置</a></li>
+            </ul>
+        </div>
+        <div class="settings_con_hd" id="j-settings-con-hd">
+            <ul class="myfansfollows">
+                {% for teacher in all_teacher %}
+
+
+                    <li class="box">
+                        <div class="left-img">
+                            <a href="{% url 'teachers:teacher_detail' teacher.id %}" target="_blank"><img
+                                    src="{{ MEDIA_URL }}{{ teacher.image }}" width="40" height="40"
+                                    class="top_head"></a>
+                        </div>
+                        <div class="right-c">
+                            <div class="title">
+                                <a href="{% url 'teachers:teacher_detail' teacher.id %}" target="_blank"><span
+                                        class="nickname">{{ teacher.name }}</span></a>
+
+                            </div>
+                            <p class="desc" title="全栈工程师">{{ teacher.work_position }}</p>
+                            <div class="fs-line">
+                                <a href="Javascript:" class="u-target"><span
+                                        class="group">{{ teacher.work_years }}年</span></a>
+                                <a href="Javascript:" class="u-target u-margin-l-15"><span
+                                        class="group">{{ teacher.points }}</span></a>
+                            </div>
+                        </div>
+                    </li>
+
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}

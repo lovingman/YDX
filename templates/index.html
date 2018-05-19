@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block self_css %}
+    <link href="{% static 'css/ydxindex.css' %}" rel="stylesheet"/>
+    <style>
+        .logotext {
+            color: black;
+        }
+
+    </style>
+{% endblock %}
+{% block self_js %}
+
+{% endblock %}
+{% block body_main %}
+    <div class="main container-fluid">
+        <div class="banner">
+            <div class="banner-box">
+
+                <div class="menuleft">
+
+
+                    <ul class="banner-menu">
+                        {% for cg in category %}
+
+                            <li>
+                                <a href="{% url 'courses:courser_list' %}?category_code={{ cg.code }}">{{ cg.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="menuright">
+                    <div id="carousel-example-generic" class="carousel slide mycarousel" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            {% for bn in banner %}
+                                <div class="item {% ifequal bn.index 1 %}
+
+                       active {% endifequal %}">
+                                    <a href="{{ bn.url }}">
+                                        <img src="{{ MEDIA_URL }}{{ bn.image }}">
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                            {#                        <div class="item">#}
+                            {#                            <img src="{% static 'image/banner2.jpg' %}">#}
+                            {#                        </div>#}
+
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                           data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                           data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!-- 职业路径 -->
+                    <div class="path-banner">
+                        <a href=""
+                           target="_blank" data-track="ljtj-1-1">
+                            <i class="i-web"></i>
+                            <p class="tit">Web前端攻城狮</p>
+                            <p class="desc">互联网时代最火爆的技术</p>
+                        </a>
+                        <a href=""
+                           target="_blank" data-track="ljtj-1-3">
+                            <i class="i-java"></i>
+                            <p class="tit">Java攻城狮</p>
+                            <p class="desc">健壮、安全、适用广泛</p>
+                        </a>
+
+                        <a href=""
+                           target="_blank" data-track="ljtj-1-4">
+                            <i class="i-android"></i>
+                            <p class="tit">Android攻城狮</p>
+                            <p class="desc">移动设备市场份额第一</p>
+                        </a>
+                        <a href=""
+                           target="_blank" data-track="ljtj-1-2">
+                            <i class="i-php"></i>
+                            <p class="tit">PHP攻城狮</p>
+                            <p class="desc">世界上最好的语言：）</p>
+                        </a>
+
+                        <a href=""
+                           target="_blank" data-track="ljtj-1-1">
+                            <i class="i-ios"></i>
+                            <p class="tit">Web前端攻城狮</p>
+                            <p class="desc">互联网时代最火爆的技术</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     <div id="main">
+   <div class="bgfff">
+    <div class="container-types clearfix">
+     <h3 class="types-title"> <span class="tit-icon icon-shizhan-l tit-icon-l"></span><em>实</em>／<em>战</em>／<em>推</em>／<em>荐</em><span class="tit-icon icon-shizhan-r tit-icon-r"></span> </h3>
+     <div class="clearfix types-content">
+         {% for fight in fights %}
+      <div class="index-card-container course-card-container container">
+       <a target="_blank" class="course-card" href="{% url 'fights:fight_class' fight.id%}" >
+        <div class="course-card-top hashadow">
+         <img class="course-banner" src="{{ MEDIA_URL }}{{ fight.image }}" />
+         <div class="course-label">
+
+          <label>{{ fight.category }}</label>
+         </div>
+        </div>
+        <div class="course-card-content">
+         <h3 class="course-card-name">{{ fight.name }}</h3>
+         <div class="clearfix course-card-bottom">
+          <div class="course-card-info">
+           <span>实战</span>
+           <span>{{ fight.get_is_easy_display }}</span>
+           <span>{{ fight.students }}人</span>
+
+          </div>
+          <div class="course-card-price">
+           ￥{{ fight.price }}
+          </div>
+         </div>
+        </div>
+       </a>
+      </div>
+         {% endfor %}
+     </div>
+    </div>
+   </div>
+
+    <div class="container-types clearfix">
+     <h3 class="types-title"> <em>新</em>／<em>上</em>／<em>好</em>／<em>课</em> </h3>
+     <div class="clearfix types-content">
+         {% for cours in courses %}
+      <div class="index-card-container course-card-container container">
+       <a  class="course-card" href="{% url 'courses:course_detail' cours.id%}" >
+        <div class="course-card-top hashadow">
+         <img class="course-banner" src="{{ MEDIA_URL }}{{ cours.image }}" />
+         <div class="course-label">
+          <label>{{ cours.category }}</label>
+
+         </div>
+        </div>
+        <div class="course-card-content">
+         <h3 class="course-card-name">{{ cours.name }}</h3>
+         <div class="clearfix course-card-bottom">
+          <div class="course-card-info">
+
+           <span>{{ cours.get_is_easy_display}}</span>
+           <span>{{ cours.students }}人</span>
+
+          </div>
+
+         </div>
+        </div> </a>
+      </div>
+      {% endfor %}
+     </div>
+
+    </div>
+
+   <!-- 精英讲师模块 -->
+   <div class="elite-bg">
+    <div class="container-types container-teacher-types clearfix">
+     <h3 class="types-title"> <span class="tit-icon icon-teacher-l tit-icon-l"></span><em>云</em>／<em>导</em>／<em>学</em>／<em>精</em>／<em>英</em>／<em>名</em>／<em>师</em><span class="tit-icon icon-teacher-r tit-icon-r"></span> <a href="https://www.imooc.com/lecturer/" class="types-title-more" target="_blank"> </a> </h3>
+     <div class="lecturer-list clearfix">
+         {% for teacher in teachers %}
+
+
+
+      <a  href="{% url 'teachers:teacher_detail' teacher.id %}" class="lecturer-item" data-track="jyms-1-1">
+          <img class="lecturer-uimg" src="{{ MEDIA_URL }}{{ teacher.image }}"  /> <span class="lecturer-name">{{ teacher.name }}</span>
+          <span class="lecturer-title">{{ teacher.work_position }}</span>
+          <span class="lecturer-p"
+             >{{ teacher.points }}</span>
+      </a>
+
+      {% endfor %}
+     </div>
+    </div>
+   </div>
+  </div>
+    <!-- 返回顶部 -->
+    <div class="go-top" data-toggle="tooltip" data-placement="left" title="返回顶部">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,124 @@
+
+
+   {% extends 'base.html' %}
+{% load staticfiles %}
+{% block self_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/ydx-teacher.css' %}">
+{% endblock %}
+{% block body_main %}
+
+            <div class="bg-teacher user-head-info">
+                <div class="user-avator">
+                    <img class="img-circle" id="avator1" src="{{ MEDIA_URL }}{{ teacher.image }}" width="100" height="100" />
+                    <p><a class="u-follow">{% if  has_fav_teacher %}已收藏{% else %}收藏
+                    {% endif %}</a></p>
+                    <script type="text/javascript">
+                            //收藏分享
+                            function add_fav(current_elem, fav_id, fav_type) {
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    url: "{% url "courses:addfav_course" %}",
+                                    data: {'fav_id': fav_id, 'fav_type': fav_type},
+                                    async: true,
+                                    beforeSend: function (xhr, settings) {
+                                        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                    },
+                                    success: function (data) {
+                                        if (data.status == 'fail') {
+                                            if (data.msg == '用户未登录') {
+                                                window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                                            } else {
+                                                alert(data.msg)
+                                            }
+
+                                        } else if (data.status == 'success') {
+                                            current_elem.text(data.msg)
+                                        }
+                                    },
+                                });
+                            }
+
+
+                            $('.u-follow').on('click', function () {
+                                add_fav($(this), {{teacher.id }}, 2);
+                            });
+
+
+                        </script>
+
+                </div>
+                <div class="user-info">
+
+                    <h3 class="user-name clearfix">
+                        {{ teacher.name }}
+                    </h3>
+                    <!--25-->
+                    <p class="about-info">
+
+                        <span class=" gender " title=" 男 ">工作{{ teacher.work_years }}年</span>
+
+
+
+                        {{ teacher.work_position }}
+
+
+                    </p>
+                    <p class="user-desc" title="目前着手于研究人工智能，精通Python编程和机器学习算法，主导过kaiterra全球天气污染智能预测系统的开发与部署，目前在做智能推荐系统的开发应用并且为相关公司提供解决方案。">
+                        {{ teacher.points }}
+                    </p>
+
+
+                </div><!-- .user-info end -->
+
+            </div>
+            <div class="teacher-center">
+                <div class="teachr-tool-bar">
+                    <a href="#" class="active">课程</a>
+                </div>
+                <div class="teacher-main">
+                {% if not all_course%}
+                <div style="height: 400px;width: 100%;text-align: center">
+                    <p>还没没有课程哦！</p>
+                </div>
+                    {% else %}
+
+
+                    <u class="teacher-course-list">
+                        {% for course in all_course %}
+                         {% if course.is_fight %}
+                        <li class="teacher-course-one">
+                        <a href=" {% url 'fights:fight_class' course.id %}">
+                            <div class="teacher-course-one-img">
+                                <img  src="{{ MEDIA_URL }}{{ course.image }}" height="113" />
+                            </div>
+                            <div class="teacher-course-one-des">
+                                <h3 class="course-title"><srtong>{{ course.name }}</srtong></h3>
+                                <p class="course-about"><span>{{ course.get_is_easy_display }}</span><span>{{ course.students }}人</span></p>
+                                <p class="course-des">{{ course.abstract }}</p>
+                            </div>
+                            </a>
+                        </li>
+                             {% else %}
+                             <li class="teacher-course-one">
+                             <a href=" {% url 'courses:course_detail' course.id %}">
+                            <div class="teacher-course-one-img">
+                                <img src="{{ MEDIA_URL }}{{ course.image }}" height="113" />
+                            </div>
+                            <div class="teacher-course-one-des">
+                                <h3 class="course-title"><srtong>{{ course.name }}</srtong></h3>
+                                <p class="course-about"><span>{{ course.get_is_easy_display }}</span><span>{{ course.students }}人</span></p>
+                                <p class="course-des" style="overflow: hidden;width: 500px;">{{ course.abstract }}</p>
+                            </div>
+                            </a>
+                        </li>
+                         {% endif %}
+                        {% endfor %}
+
+                        </u>
+                    {% endif %}
+                </div>
+            </div>
+
+
+{% endblock %}

@@ -1,0 +1,98 @@
+.followsfans-ul{
+	list-style: none;
+	margin-left: 100px;
+}
+.followsfans-main{
+	height: 450px;
+
+}
+.box {
+    float: left;
+    width: 27.4%;
+    padding: 20px;
+    background-color: #f8fafc;
+    margin-left: 18px;
+    margin-bottom: 15px;
+    min-height: 114px;
+}
+
+.left-img {
+    float: left;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    top: 0;
+}
+.right-c {
+    margin-left: 50px;
+}
+.left-img .top_head {
+
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+.right-c .title {
+    font-weight: 700;
+    color: #07111b;
+    padding-bottom: 8px;
+    width: 100%;
+}
+.right-c .desc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    min-height: 18px;
+}
+.right-c .fs-line {
+    color: #93999f;
+    padding-bottom: 8px;
+    font-size: 12px;
+}
+.right-c .fs-line .u-target {
+    color: #93999f !important;
+}
+.right-c .fs-line .group {
+    min-width: 88px;
+    display: inline-block;
+}
+.btn-green-o {
+    border: 1px solid #00b43c;
+    color: #00b43c;
+    background-color: #fff;
+    margin-right: 14px;
+}
+.btn-o {
+    display: inline-block;
+    padding: 6px 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 76px;
+}
+.btn-o, .nav a, .nodata {
+    text-align: center;
+}
+.right-c .desc, .right-c .fs-line {
+    color: #93999f;
+    padding-bottom: 8px;
+    font-size: 12px;
+}
+.right-c .title .nickname {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 60%;
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+}
+.myfansfollows{
+    margin-top: 20px;
+    margin-left: 60px;
+}

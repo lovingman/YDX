@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load  staticfiles %}
+{% block self_css %}
+    <link href="{% static 'css/video-js.css' %}" rel="stylesheet">
+    <!-- 包括所有已编译的插件 -->
+    <link href="{% static 'css/ydx-main.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/ydx-video.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+{% block self_js %}
+    <script src="{% static 'js/videojs-ie8.min.js' %}"></script>
+    <script src="{% static 'js/video.js' %}"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 600) $('div.go-top').show();
+                else $('div.go-top').hide();
+            });
+            $('div.go-top').click(function () {
+                $('html, body').animate({
+                        scrollTop: 0
+                    },
+                    600);
+            });
+        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        //菜单切换
+        $(document).ready(function () {
+            $(".video-play-top .fl").click(function () {
+                $("header").toggle();
+                $(".col-md-4").toggle();
+                var display = $('.col-md-4').css('display');
+                if (display == 'none') {
+                    $(".col-md-8").addClass("change");
+                    $(".video-js").width("1300");
+                    // $(".video-js .vjs-big-play-button").css({"top":"250px","left": "600px"})
+
+                } else {
+                    $(".col-md-8").removeClass("change");
+                    $(".video-js").width("900")
+                    // $(".video-js .vjs-big-play-button").css({"top":"200px","left": "400px"})
+                }
+            });
+            // 评论
+            $(document).ready(function () {
+
+                $(".video-play-top .fr").click(function () {
+
+                    var player = videojs('my_video_1', {}, function () {
+                        console.log('Good to go!');
+                        //this.play(); // if you don't trust autoplay for some reason
+                    });
+                    console.log('暂停播放');
+                    player.pause();
+
+                });
+            });
+
+            // 列表上下切换
+            $(".select-icon").click(function () {
+                $(".glyphicon").toggleClass("glyphicon-chevron-down");
+
+            });
+        });
+
+    </script>
+    <script type="text/javascript" src="https://codepen.io/heff/pen/EarCt.js">
+    </script>
+
+    <script type="text/javascript">
+     function change_progess(video_id,where_you_at,howLongIsThis) {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "courses:progess"%}",
+                data: {'video_id': video_id, 'whereYouAt':where_you_at,'howLongIsThis':howLongIsThis},
+                async: true,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (data) {
+                    if (data.status == 'fail') {
+                        if (data.msg == '用户未登录') {
+                            window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                        }
+                    } else if (data.status == 'success') {
+{#                          window.location.href = "{% url 'courses:course_detail' v %}";#}
+                           }
+                   },
+            });
+        }
+ var myPlayer = videojs('my_video_1');
+        videojs("my_video_1").ready(function () {
+            var myPlayer = this;
+            myPlayer.play();
+            myPlayer.currentTime({{progess }});
+            myPlayer.on("ended", function () {
+                console.log("end", this.currentTime());
+                var howLongIsThis = myPlayer.duration();
+                var whereYouAt = myPlayer.currentTime();
+                var howLongIsThis = myPlayer.duration();
+                change_progess({{ video.id }},whereYouAt,howLongIsThis)
+            });
+            //设置播放进度：
+        });
+     $(document).ready(function () {
+           window.onbeforeunload = onbeforeunload_handler;
+               function onbeforeunload_handler(){
+              videojs("my_video_1").ready(function () {
+                    var howLongIsThis = myPlayer.duration();
+                    var whereYouAt = myPlayer.currentTime();
+                    var howLongIsThis = myPlayer.duration();
+                    change_progess({{ video.id }},whereYouAt,howLongIsThis)
+                    });
+         }
+     });
+
+
+{#         $('.list-group-item').onclick(function () {#}
+{#              videojs("my_video_1").ready(function () {#}
+{#                    var howLongIsThis = myPlayer.duration();#}
+{#                    var whereYouAt = myPlayer.currentTime();#}
+{#                    var howLongIsThis = myPlayer.duration();#}
+{#                    change_progess({{ video.id }},whereYouAt,howLongIsThis)#}
+{#                    });#}
+{#         })#}
+    </script>
+{% endblock %}
+{% block body_main %}
+    <main>
+        <div class="row">
+
+            <div class="col-md-4" id="navbar-example">
+                <!-- style=" display: none;" -->
+
+                <div class="video-play-top course-lists">
+                    <h3 class="ct-con">{{ course.name }}</h3>
+                </div>
+                {% for lesson in course.get_course_lesson %}
+                <a class="course-lists select-icon" data-toggle="collapse" href="#collapseExample{{ forloop.counter }}"
+                   aria-controls="collapseExample">
+                    <span class="glyphicon glyphicon-chevron-down glyphicon-chevron-up "></span>{{ lesson.name }}
+                </a>
+                <div class="collapse in" id="collapseExample{{ forloop.counter }}" >
+                    <div class="well">
+                        <div class="list-group">
+                            {% for video in lesson.get_lesson_video %}
+                            <a href="{% url 'courses:video' video.id %}" class="list-group-item">{{ video.name }} {{ video.learn_times |floatformat:0 }} 秒
+                            {% for progess in progesses %}
+                                                 {% ifequal video progess.video %}
+                                                     {% if progess.is_finish %}
+                                                     <i style="float: right;margin-right: 10px;" class="glyphicon glyphicon-ok-circle"></i>
+                                                     {% else %}
+                                                          <i style="float: right;margin-right: 10px;" class="glyphicon glyphicon-adjust"></i>
+                                                     {% endif %}
+                                                  {% endifequal %}
+                                                    {% endfor %}
+                            </a>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+            </div>
+            <div class="col-md-8">
+                <!-- change -->
+                <div class="video-play-top">
+                    <img src="{% static 'image/menu.png' %}" class="fl"/>
+                    <h3 class="ct-con">{{ video.name }}</h3>
+                    <img src="{% static 'image/work.png' %}" class="fr" data-toggle="modal" data-target="#myModal"/>
+                </div>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">提问</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form">
+                                    <div class="form-group">
+
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary">提交更改</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <div class="video-play">
+                    <!-- 视屏播放器 -->
+                    <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="1000"
+                           height="520" poster="{{ MEDIA_URL }}{{ course.image }}"
+                           data-setup='{ "aspectRatio":"9:4", "playbackRates": [1, 1.5, 2] }'>
+                        <source src="{{ video.url }}" type="video/mp4">
+{#                        <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">#}
+{#                        <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">#}
+                        <!-- 字幕 -->
+                        <!-- <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+                        <!-- Tracks need an ending tag thanks to IE9 -->
+                        <!--  <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+                        <!-- Tracks need an ending tag thanks to IE9 -->
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports
+                                HTML5 video</a></p>
+                    </video>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

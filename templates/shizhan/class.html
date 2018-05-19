@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block self_css %}
+    <link href="{% static 'css/class.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block body_main %}
+
+    <div class="course-class-infos ">
+        <div class="w pr">
+
+            <div class="path">
+                <a href="{% url 'fights:fight_list' %}">实战</a>
+                <i class="path-split">\</i><span>{{ finght.name }}</span>
+            </div>
+
+
+
+            <div class="info-warp tc">
+                <div class="info-bar tc">
+
+                    <div class="statics clearfix">
+
+                        <div class="static-item first">
+                            <span class="meta">难度</span>
+                            <span class="meta-value"><strong>{{ finght.get_is_easy_display }}</strong></span>
+                        </div>
+                        <div class="static-item static-time">
+                            <span class="meta">时长</span>
+                            <span class="meta-value"><strong>{{ finght.learn_times }}</strong></span>
+                            <em></em>
+                        </div>
+                        <div class="static-item">
+                            <span class="meta">学习人数</span>
+                            <span class="meta-value"><strong>{{ finght.students }}</strong></span>
+                            <em></em>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="price-box">
+					<span class="num clearfix">
+
+						<span class="discount-price">
+							<span class="baseline baseline-y">
+								<span class="new-y">¥</span>
+								<span class="cur-price"><b>{{ finght.price }}</b><b class="sub">.00</b></span>
+							</span>
+						</span>
+
+					</span>
+
+
+                </div>
+
+                <div class="clearfix btnwarp">
+                     {% if has_buy_fight %}
+                         <a class="js-buy-trigger buy-class-btn class-btn1 buynow-btn" href="{% url 'courses:fight_detail' finght.id%}"
+                       style="text-decoration: none;cursor:pointer;">
+
+                        <span>立即学习</span>
+
+                       </a>
+                         {% else %}
+                    <a class="js-buy-trigger buy-class-btn class-btn1 buynow-btn"
+                       style="text-decoration: none;cursor:pointer;">
+
+                        <span id="buy">立即购买</span>
+
+                    </a>
+                    <script type="text/javascript">
+                        //收藏分享
+                        function buyfight(current_elem, fight_id) {
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                url: "{% url "fights:fight_order" %}",
+                                data: {'fight_id': fight_id},
+                                async: true,
+                                beforeSend: function (xhr, settings) {
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                                success: function (data) {
+                                    if (data.status == 'fail') {
+                                        if (data.msg == '用户未登录') {
+                                            window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                                        } else {
+
+                                        }
+                                    } else if (data.status == 'success') {
+                                        window.location.href = "{% url 'fights:fight_order' %}?fight_id={{ finght.id }}"
+                                    }
+                                },
+                            });
+                        }
+                     function addcart(current_elem, fight_id) {
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                url: "{% url "fights:fight_addcart" %}",
+                                data: {'fight_id': fight_id},
+                                async: true,
+                                beforeSend: function (xhr, settings) {
+                                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                                },
+                                success: function (data) {
+                                    if (data.status == 'fail') {
+                                        if (data.msg == '用户未登录') {
+                                            window.location.href = "{% url 'users:login' %}?next={{ request.path }}";
+                                        } else {
+
+                                        }
+                                    } else if (data.status == 'success') {
+                                      alert("已经成功加入购物车")
+                                    }
+                                },
+                            });
+                        }
+                        $(document).ready(function () {
+                            $('#buy').on('click', function () {
+                                buyfight($(this), {{ finght.id }});
+                            });
+                            $('.js-addcart').on('click',function () {
+                                addcart($(this), {{ finght.id }})
+                            });
+
+                        });
+                    </script>
+                    <a class="js-addcart addcart" style="cursor:pointer;">
+                        <i class="glyphicon glyphicon-shopping-cart" ></i>
+                    </a>
+                       {% endif %}
+                    <div class="preview-tip">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="info-bg" id="js-info-bg">
+            <div class="cover-img-wrap" style="background-image: url({{ MEDIA_URL }}{{ finght.fight_image }});"></div>
+        </div>
+    </div>
+
+    <div class="course-infos-t">
+        <div id="Anchor"></div>
+        <div class="info-video clearfix">
+            <div class="video-dark-box l clearfix" style="display: block;">
+                <div class="js-video-btn videoBtn l">
+                    <div></div>
+
+                </div>
+                <div id="videoInfo" class="l">
+                    <div class="slimScrollDiv"
+                         style="position: relative; overflow: hidden; width: auto; height: 312px;">
+                        <div id="content" style="overflow: hidden; width: auto; height: 312px;">
+                            <div class="con">
+                                <div class="info-name">{{ finght.name }}</div>
+                                <div class="info-desc">
+                                   {{ finght.desc }}
+                                </div>
+
+                            </div>
+
+                            <div class="line"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="teacher-right-box r">
+                <div class="teacher">
+                    <div class="whiteBorder"></div>
+                    <a href="{% url 'teachers:teacher_detail' finght.teacher.id %}" target="_blank">
+                        <div class="headPortrait">
+                            <img src="{{ MEDIA_URL }}{{ finght.teacher.image }}">
+                        </div>
+                        <div class="nickname">{{ finght.teacher.name }}</div>
+                    </a>
+                    <p>{{ finght.teacher.work_position }}</p>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

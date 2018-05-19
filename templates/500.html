@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>505 - 抱歉，您访问的页面不存在。</title>
+
+    <style>
+/* Code tidied up by ScrapBook */
+body { background: rgb(84, 136, 213) none repeat scroll 0% 0%; font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft YaHei","微软雅黑",sans-serif; }
+.clear-fix { clear: both; }
+.wrapper { font-size: 1rem; max-width: 780px; margin: 2.5em auto 0px; }
+a { display: block; }
+a img { height: 36px; }
+.content { margin-top: 6em; }
+.detail { width: 100%; height: 11em; }
+{#.content-icon { width: 15em; height: 10em; float: left; background-image: url("2c8e6844-7db9-4151-8f77-e40faac9f5b0.png"); background-size: 100% 100%; }#}
+.content-detail { width: calc(100% - 20em); height: 11em; float: left; color: rgb(255, 255, 255); border-left: 0.5em solid rgb(255, 255, 255); margin-left: 3em; padding-left: 1.5em; position: relative; }
+.content-detail a { font-size: 1.1rem; color: rgb(255, 255, 255); position: absolute; display: inline-block; bottom: -6em; left: 1.8em; border: 1px solid rgb(255, 255, 255); padding: 0.8em 2em; text-decoration: none; border-radius: 0.3em; margin: 0px auto; }
+.content-detail a:hover { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(66, 137, 219); }
+.words-zh { font-size: 2.8rem; font-weight: bold; line-height: 1.6; }
+.words-en { font-size: 0.9rem; position: absolute; bottom: 0px; left: 2.1em; }
+.font-gray { color: rgb(156, 186, 229); }
+</style>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+#kf-content-div a, #kf-content-div p { border: 0px none !important; padding: 0px !important; margin: 0px !important; }
+#kf-wiki-div a:hover, #kf-content-div a:focus { text-decoration: none !important; }
+{##kf-my-add-btn { display: none; height: 18px; width: 18px; position: fixed; z-index: 2147483647; text-decoration: none; font: bold 12px/25px Arial; color: rgba(62, 87, 6, 0.53); background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , rgb(165, 205, 78) 0%, rgb(107, 143, 26) 100%) repeat scroll 0% 0%; opacity: 0.55; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.22); border-radius: 18px; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.29), 1px 1px 1px rgba(255, 255, 255, 0.44) inset; transition: all 0.15s ease 0s; }#}
+#kf-my-add-btn { color: rgba(62, 87, 6, 0.53); opacity: 0.55; }
+#kf-my-add-btn:hover { color: rgb(62, 87, 6); opacity: 1; }
+#kf-add-loading-img { display: none; height: 24px; width: 24px; position: fixed; bottom: 20px; right: 20px; z-index: 2147483647; border-radius: 24px; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.29), 1px 1px 1px rgba(255, 255, 255, 0.24) inset; }
+#kf-content-div { opacity: 0; display: none; width: 320px; position: fixed; right: 20px; bottom: -190px; z-index: 2147483647; font: 12px/25px Arial,sans-serif; color: rgb(34, 34, 34); background: transparent none repeat scroll 0% 0%; }
+#kf-top-div { height: 40px; width: 320px; background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%; border-radius: 20px 20px 0px 0px; line-height: 40px; text-align: center; }
+#kf-wiki-tab { width: 160px; color: rgba(255, 255, 255, 0.88); text-decoration: none; background: rgba(0, 152, 249, 0.6) none repeat scroll 0% 0%; float: left; font-size: 1em; border-radius: 20px 20px 0px 0px; }
+#kf-translator-tab { width: 160px; color: rgba(0, 0, 0, 0.25); text-decoration: none; background: transparent none repeat scroll 0% 0%; font-size: 1em; float: left; border-radius: 20px 20px 0px 0px; }
+#kf-frame-div { box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.33); text-align: left; }
+#kf-trans-div { font-weight: bold; width: 300px; height: auto; background: rgb(233, 233, 233) none repeat scroll 0% 0%; opacity: 0.8; padding: 10px; max-height: 190px; overflow: auto; }
+#kf-wiki-div { width: 300px; max-height: 190px; padding: 10px; background: rgb(233, 233, 233) none repeat scroll 0% 0%; opacity: 0.8; border: 0px none; overflow: auto; }
+.tipso_style { cursor: help; border-bottom: 1px dotted; }
+</style></head>
+
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="detail">
+            <div class="content-icon"></div>
+            <div class="content-detail">
+                <div class="words-zh">抱歉，</div>
+                <div class="words-zh">您访问的服务器错误。</div>
+                <div class="words-en">Error 500, <span class="font-gray">Server Error</span>
+                </div>
+                <a href="{% url 'index' %}">别揍我</a>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

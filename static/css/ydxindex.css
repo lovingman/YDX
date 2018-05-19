@@ -1,0 +1,806 @@
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0px;
+    padding: 0px;
+}
+
+fieldset, img {
+    border: 0px none;
+}
+
+:focus {
+    outline: 0px none;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var, optgroup {
+    font-style: normal;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 400;
+}
+
+input, button, textarea, select {
+    border: 0px none;
+}
+
+body {
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    color: rgb(94, 94, 94);
+    font: 14px/2em Microsoft YaHei, SimSun, Arial;
+}
+
+:link, :visited, ins {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: rgb(94, 94, 94);
+}
+
+a:hover {
+    color: rgb(201, 57, 74);
+}
+
+a:active {
+    color: rgb(102, 102, 102);
+}
+
+.clearfix::after {
+    content: " ";
+    display: block;
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+}
+
+.hide {
+    display: none;
+}
+
+a:focus {
+    outline: 0px none;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.ml20 {
+    margin-left: 20px !important;
+}
+
+.color-red {
+    color: rgb(239, 19, 0) !important;
+}
+
+.pr {
+    position: relative;
+}
+
+a:link, a:visited, body, html {
+    color: rgb(28, 31, 33);
+}
+
+.container, .newcontainer, .page-container {
+    width: 1152px;
+    margin: 0px auto;
+}
+
+#nav, .container, .waper {
+    margin: 0px auto;
+}
+
+body, html {
+    font: 14px/1.5 "PingFang SC", "微软雅黑", "Microsoft YaHei", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
+}
+
+body {
+    overflow-y: scroll;
+    min-width: 1200px;
+    background-color: rgb(248, 250, 252);
+}
+
+a:active, a:hover {
+    color: rgb(236, 21, 0);
+}
+
+.clearfix::after {
+    content: " ";
+    display: block;
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+#main {
+    min-height: 750px;
+    padding: 20px 0px;
+}
+
+.bindHintBox {
+    background-color: rgb(255, 255, 204);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    width: 313px;
+    height: 54px;
+    z-index: 3;
+    font-size: 12px;
+    line-height: 54px;
+    color: rgb(7, 17, 27);
+    padding: 0px 15px;
+}
+
+.bindHintBox .closeBindHint {
+    width: 17px;
+    height: 17px;
+    position: relative;
+    top: 4px;
+    left: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease 0s;
+}
+
+.bindHintBox .arrow {
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    border-width: 0px 10px 10px;
+    border-color: transparent transparent rgb(255, 255, 204);
+    border-style: solid;
+}
+
+a, button, input {
+    outline: 0px none;
+}
+
+a:active {
+}
+
+button::-moz-focus-inner {
+    border: 0px none;
+}
+
+@media screen and (max-width: 1440px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 979px) {
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 0px;
+        transition: transform 0.3s ease 0s;
+    }
+
+    body::after {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: 1000;
+        content: " ";
+        display: block;
+        background: rgb(0, 0, 0) none repeat scroll 0% 0%;
+        opacity: 0;
+        transition: all 0.3s ease 0s;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 480px) {
+}
+
+@font-face {
+    font-family: "icomoon";
+    font-style: normal;
+    font-weight: 400;
+    /*src: url("about:blank") format("embedded-opentype"), url("about:blank") format("truetype"), url("about:blank") format("woff"), url("about:blank") format("svg");*/
+}
+
+[class*=" icon-"], [class^="icon-"] {
+    font-family: icomoon !important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.icon-set_sns::before {
+    content: "";
+}
+
+.icon-star2::before {
+    content: "";
+}
+
+@font-face {
+    font-family: "imv2";
+    font-style: normal;
+    font-weight: 400;
+    /*src: url("about:blank") format("embedded-opentype"), url("about:blank") format("truetype"), url("about:blank") format("woff"), url("about:blank") format("svg");*/
+}
+
+@font-face {
+    font-family: "DINCond-M";
+    font-style: normal;
+    font-weight: 400;
+    /*src: url("about:blank");*/
+}
+
+body .bk, div {
+    background-size: cover;
+}
+
+#main, #nav-item-index {
+    display: none;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.color-red, .logined li > a:hover i {
+    color: rgb(240, 20, 20);
+}
+
+.container {
+    position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@font-face {
+    font-family: "dincondm";
+    font-style: normal;
+    /*src: url("about:blank");*/
+}
+
+.course-card-price {
+    font-size: 12px;
+    color: rgb(77, 85, 93);
+    line-height: 20px;
+    margin-top: 8px;
+}
+
+.course-card-container {
+    width: 216px;
+    height: 252px;
+    position: relative;
+    transition: all 0.3s linear 0s;
+}
+
+.course-card-container:hover .course-card-top.hashadow {
+    box-shadow: 0px 8px 16px 0px rgba(7, 17, 27, 0.1);
+}
+
+.course-card-container:hover .course-card-top .course-banner {
+    background-color: rgb(255, 255, 255);
+}
+
+.course-card-container:hover .course-card-name {
+    color: rgb(240, 20, 20) !important;
+}
+
+.course-card-container .course-card-top {
+    width: 216px;
+    height: 120px;
+    position: relative;
+    border-radius: 8px;
+    transition: all 0.3s ease 0s;
+}
+
+.course-card-container .course-card-top.hashadow {
+    overflow: hidden;
+}
+
+.course-card-container .course-card-top .course-banner {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(243, 245, 247);
+    border-radius: 8px;
+}
+
+.course-card-container .course-card-top .course-label {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    line-height: 16px;
+}
+
+.course-card-container .course-card-top .course-label label {
+    display: inline-block;
+    background: rgba(7, 17, 27, 0.4) none repeat scroll 0% 0%;
+    border-radius: 12px;
+    padding: 4px 8px;
+    margin-bottom: 2px;
+    margin-right: 0px;
+    font-weight: 200;
+}
+
+.course-card-container .course-card-content {
+    padding: 12px 8px;
+}
+
+.course-card-container .course-card-content .course-card-name {
+    font-size: 16px;
+    color: rgb(7, 17, 27);
+    line-height: 24px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -moz-box-orient: vertical;
+    max-height: 46px;
+    transition: all 0.3s ease 0s;
+}
+
+.course-card-container .course-card-content .course-card-info {
+    font-size: 12px;
+    color: rgb(147, 153, 159);
+    line-height: 24px;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+.course-card-container .course-card-content .course-card-info span {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.course-card-container .course-card-content .course-card-info .icon-set_sns {
+    margin-right: 2px;
+}
+
+.course-card-container .course-card-content .course-card-info .course-star-box {
+    color: rgba(255, 153, 0, 0.4);
+    margin-right: 0px;
+}
+
+.course-card-container .course-card-content .course-card-info .course-star-box .on {
+    color: rgb(255, 153, 0);
+}
+
+body {
+    background-color: rgb(248, 250, 252) !important;
+}
+
+.bgfff {
+    background-color: rgb(255, 255, 255) !important;
+}
+
+#main {
+    display: block;
+    padding: 0px;
+}
+
+#main > .bgfff {
+    box-shadow: 0px 2px 8px 0px rgba(7, 17, 27, 0.06);
+}
+
+#main > .bg000 {
+    box-shadow: 0px 2px 4px 0px rgba(7, 17, 27, 0.06);
+}
+
+.elite-bg {
+    height: 408px;
+    background: #fff;
+}
+
+.elite-bg .types-title-more {
+    transition: all 0.3s ease 0s;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.elite-bg .types-title-more:hover {
+    color: rgb(255, 255, 255) !important;
+}
+
+.container-types {
+    width: 1152px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 36px 0px 48px;
+}
+
+.container-types .types-title {
+    position: relative;
+    font-size: 14px;
+    color: rgb(147, 153, 159);
+    letter-spacing: 0.6px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.container-types .types-title em {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(77, 85, 93);
+    margin: 0px 3px;
+}
+
+.container-types .types-title .tit-icon {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 56px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0)
+}
+
+.container-types .types-title .tit-icon-l {
+    margin-right: 24px;
+}
+
+.container-types .types-title .tit-icon-r {
+    margin-left: 24px;
+}
+
+.container-types .types-title span.icon-shizhan-l {
+    background-position: center 0px;
+}
+
+.container-types .types-title span.icon-shizhan-r {
+    background-position: center -36px;
+}
+
+.container-types .types-title span.icon-teacher-l {
+    background-position: center -432px;
+}
+
+.container-types .types-title span.icon-teacher-r {
+    background-position: center -468px;
+}
+
+.container-types .types-title .types-title-more {
+    position: absolute;
+    color: rgb(147, 153, 159);
+    height: 20px;
+    top: 8px;
+    right: 10px;
+    font-size: 12px;
+    line-height: 36px;
+}
+
+.container-types .types-title .types-title-more:hover {
+    color: rgb(77, 85, 93);
+}
+
+.container-types .types-content {
+    margin-top: 24px;
+    margin-left: -18px;
+}
+
+.container-types .index-card-container {
+    float: left;
+    margin-left: 18px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.container-types .lecturer-item .lecturer-name, .container-types .lecturer-item .lecturer-p {
+    display: block;
+    padding: 0px 36px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    -moz-box-orient: vertical;
+    word-break: break-all;
+}
+
+.container-types .lecturer-list {
+    margin-top: 40px;
+}
+
+.container-types .lecturer-item {
+    float: left;
+    position: relative;
+    width: 216px;
+    height: 248px;
+    margin-right: 18px;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8) none repeat scroll 0% 0%;
+    box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease 0s;
+}
+
+.container-types .lecturer-item:last-child {
+    margin-right: 0px;
+}
+
+.container-types .lecturer-item:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 8px 16px 0px rgba(7, 17, 27, 0.2);
+}
+
+.container-types .lecturer-item:hover .lecturer-uimg {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    transition: all 0.3s ease 0s;
+}
+
+.container-types .lecturer-item:hover .lecturer-p {
+    position: relative;
+    height: 168px;
+    top: -92px;
+    color: rgb(7, 17, 27);
+    transition: all 0.3s ease 0s;
+}
+
+.container-types .lecturer-item:hover .lecturer-name, .container-types .lecturer-item:hover .lecturer-title {
+    opacity: 0;
+}
+
+.container-types .lecturer-item .lecturer-uimg {
+    position: absolute;
+    top: -16.6px;
+    left: 50%;
+    margin-left: -48px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+}
+
+.container-types .lecturer-item .lecturer-name {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 92px;
+    white-space: nowrap;
+    color: rgb(7, 17, 27);
+    font-weight: 700;
+}
+
+.container-types .lecturer-item .lecturer-title {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 12px;
+    color: rgb(77, 85, 93);
+    height: 24px;
+    line-height: 24px;
+}
+
+.container-types .lecturer-item .lecturer-p {
+    position: relative;
+    top: 0px;
+    font-size: 12px;
+    line-height: 24px;
+    color: rgb(77, 85, 93);
+    height: 72px;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.container-teacher-types .types-title {
+    color:#000;
+}
+
+.container-teacher-types .types-title em {
+    color:#000;
+}
+
+div.go-top {
+    display: none;
+    opacity: 0.6;
+    z-index: 999999;
+    position: fixed;
+    bottom: 80px;
+    left: 96%;
+    border: 1px solid rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    background-color: rgb(247, 218, 35);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+div.go-top:hover {
+    opacity: 1;
+}
+
+div.go-top div.arrow {
+    position: absolute;
+    left: 10px;
+    top: -1px;
+    width: 0px;
+    height: 0px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent transparent rgb(133, 144, 166);
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+}
+
+div.go-top div.stick {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 8px;
+    height: 14px;
+    display: block;
+    background-color: rgb(133, 144, 166);
+    border-radius: 1px;
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+}
+
+.banner {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.banner-box {
+    width: 1152px;
+    overflow: hidden;
+    height: 444px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menuleft {
+    position: relative;
+    float: left;
+    width: 216px;
+    height: 444px;
+    z-index: 2;
+    padding: 0px;
+    background: rgb(43, 51, 59) none repeat scroll 0% 0%;
+    border-bottom-left-radius: 4px;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.banner-menu {
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    padding: 0px;
+    list-style: outside none none;
+    margin-top: 0.3px;
+}
+
+.banner-menu li {
+    height: 63.33px;
+    width: 100%;
+    line-height: 63.33px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.banner-menu li:hover {
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+}
+
+.banner-menu a:hover {
+    color: rgb(245, 210, 32);
+}
+
+.banner-menu a {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    width: 216px;
+    line-height: 44.33px;
+}
+
+.menuright {
+    position: relative;
+    float: left;
+    width: 936px;
+    height: 444px;
+    margin: 0px;
+    padding: 0px;
+    background: green none repeat scroll 0% 0%;
+}
+
+.mycarousel {
+    width: 936px;
+    height: 316px;
+}
+
+.path-banner {
+    width: 936px;
+    height: 128px;
+    box-shadow: 0px 4px 8px 0px rgba(7, 17, 27, 0.1);
+    text-align: center;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    z-index: 100;
+}
+
+.path-banner > a {
+    margin-left: 5px;
+    float: left;
+    text-decoration: none;
+    font-size: 0px;
+    width: 180px;
+    height: 128px;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.path-banner i {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0) url("../image/path_new.png") no-repeat scroll 0% 0% / 100% auto;
+    margin-top: 22px;
+}
+
+.path-banner .tit {
+    font-size: 14px;
+    color: rgb(7, 17, 27);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.path-banner .desc {
+    font-size: 12px;
+    color: rgb(147, 153, 159);
+    line-height: 16px;
+    margin-top: 2px;
+    font-weight: 400;
+}
+
+.path-banner .i-php {
+    background-position: center -36px;
+}
+
+.path-banner .i-java {
+    background-position: center -72px;
+}
+
+.path-banner .i-android {
+    background-position: center -108px;
+}
+
+.path-banner .i-ios {
+    background-position: center -144px;
+}
+
+.main {
+    background: rgb(250, 250, 250) none repeat scroll 0% 0%;
+}
+
+.hot {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: medium none;
+}
+
+img {
+    border: 0px none;
+}

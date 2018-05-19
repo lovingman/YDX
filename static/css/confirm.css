@@ -1,0 +1,96 @@
+/* Code tidied up by ScrapBook */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+:focus { outline: 0px none; }
+em { font-style: normal; }
+h1, h2, h3, h4, h5, h6 { font: 14px/2em "PingFang SC","微软雅黑","Microsoft YaHei","Helvetica","Helvetica Neue","Tahoma","Arial","sans-serif"; }
+input, button, textarea, select { border: medium none; }
+body { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(94, 94, 94); font: 14px/2em "PingFang SC","微软雅黑","Microsoft YaHei","Helvetica","Helvetica Neue","Tahoma","Arial","sans-serif"; }
+ol, ul { list-style: outside none none; }
+:link, :visited, ins { text-decoration: none; }
+a:link, a:visited { color: rgb(94, 94, 94); }
+a:hover { color: rgb(240, 20, 20); }
+a:active { color: rgb(240, 20, 20); }
+.clearfix::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix {  }
+.l { float: left; }
+.r { float: right; }
+a:focus { outline: medium none; }
+input, textarea { outline: medium none; }
+html { font-family: sans-serif; }
+a { background-color: transparent; }
+a:focus, a:active, a:hover { outline: 0px none; }
+button, input, optgroup, select, textarea { color: inherit; font: inherit; margin: 0px; }
+textarea { overflow: auto; }
+
+
+@keyframes vjs-spinner-spin {
+100% { transform: rotate(360deg); }
+}
+@keyframes vjs-spinner-spin {
+100% { transform: rotate(360deg); }
+}
+@keyframes vjs-spinner-fade {
+0% { border-top-color: rgb(115, 133, 159); }
+20% { border-top-color: rgb(115, 133, 159); }
+35% { border-top-color: white; }
+60% { border-top-color: rgb(115, 133, 159); }
+100% { border-top-color: rgb(115, 133, 159); }
+}
+@keyframes vjs-spinner-fade {
+0% { border-top-color: rgb(115, 133, 159); }
+20% { border-top-color: rgb(115, 133, 159); }
+35% { border-top-color: white; }
+60% { border-top-color: rgb(115, 133, 159); }
+100% { border-top-color: rgb(115, 133, 159); }
+}
+@media screen and (max-width: 480px) {
+}
+.body-main { min-height: 750px; }
+#header { background: rgb(7, 17, 27) none repeat scroll 0% 0%; }
+@media screen and (max-width: 1340px) {
+}
+@media screen and (max-width: 1200px) {
+}
+body { width: 100%; height: 100%; min-width: 1152px; background-color: rgb(248, 250, 252); }
+.cart-header { height: 160px; background: rgba(0, 0, 0, 0) url("../image/cart-header-bg.jpg") repeat-x scroll left bottom; }
+.cart-header .cart-header-warp { width: 1104px; height: 120px; line-height: 120px; margin-left: auto; margin-right: auto; font-size: 14px; }
+.cart-header .left { float: left; }
+.cart-header .right { float: right; }
+.cart-header .cart-title { color: rgb(77, 85, 93); font-weight: 200; font-size: 14px; }
+.cart-header .cart-title h1 { font-size: 32px; line-height: 115px; margin-right: 25px; color: rgb(7, 17, 27); font-weight: 200; }
+.cart-body { width: 1152px; padding: 0px 36px 32px; background-color: rgb(255, 255, 255); margin-top: -40px; margin-left: auto; margin-right: auto; box-shadow: 0px 8px 16px 0px rgba(7, 17, 27, 0.1); border-radius: 8px; box-sizing: border-box; }
+body { background: rgb(248, 250, 252) none repeat scroll 0% 0%; }
+.title-box { padding-top: 36px; padding-bottom: 24px; }
+.title-box .goods-info-title { margin-left: 12px; color: rgb(7, 17, 27); font-size: 16px; line-height: 16px; }
+.title-box a { color: rgb(147, 153, 159); font-size: 12px; line-height: 16px; }
+.detail-box { width: 100%; }
+.detail-box ul { width: 100%; padding-bottom: 36px; border-bottom: 1px solid rgb(217, 221, 225); }
+.detail-box ul li { padding: 24px; box-sizing: border-box; background: rgb(243, 245, 247) none repeat scroll 0% 0%; margin-bottom: 1px; }
+.detail-box ul li img { width: 160px; height: 90px; margin-right: 24px; }
+.detail-box ul li .text-info-box { width: 462px; height: 90px; margin-right: 96px; }
+.detail-box ul li .text-info-box .package-title { margin-top: 8px; font-size: 12px; color: rgb(7, 17, 27); line-height: 24px; }
+.detail-box ul li .text-info-box .package-info-title { margin: 0px; font-size: 16px; color: rgb(7, 17, 27); line-height: 24px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.detail-box ul li .info-price { position: relative; margin-top: 35px; width: 286px; font-size: 16px; color: rgb(240, 20, 20); }
+.detail-box ul li:last-child { margin-bottom: 0px; }
+.pay-box { margin-top: 36px; }
+.pay-box .rw { width: 140px; box-sizing: border-box; text-align: right; }
+.pay-box .goods-total-price-box, .pay-box .coupons-discount-box, .pay-box .student-discount-box, .pay-box .package-discount-box { margin-bottom: 16px; }
+.pay-box .goods-total-price-box .price-num, .pay-box .coupons-discount-box .price-num, .pay-box .student-discount-box .price-num, .pay-box .package-discount-box .price-num { position: relative; font-size: 14px; line-height: 14px; color: rgb(7, 17, 27); }
+.pay-box .goods-total-price-box .price-text, .pay-box .coupons-discount-box .price-text, .pay-box .student-discount-box .price-text, .pay-box .package-discount-box .price-text { text-align: right; font-size: 14px; color: rgb(7, 17, 27); line-height: 14px; }
+.pay-box .goods-total-price-box .price-text span, .pay-box .coupons-discount-box .price-text span, .pay-box .student-discount-box .price-text span, .pay-box .package-discount-box .price-text span { margin-left: 4px; margin-right: 4px; }
+.pay-box .pay-price-box { color: rgb(7, 17, 27); }
+.pay-box .pay-price-box .price { position: relative; color: rgb(240, 20, 20); font-size: 24px; line-height: 24px; font-weight: 700; }
+.pay-box .pay-price-box .price span { float: none; font-weight: 700; }
+.pay-box .pay-account { font-size: 12px; color: rgb(147, 153, 159); line-height: 24px; margin-bottom: 20px; margin-top: 15px; }
+.pay-box .submit-btn { padding: 0px; width: 140px; height: 40px; text-align: center; font-size: 14px; line-height: 40px; }
+.moco-btn { position: relative; display: inline-block; margin-bottom: 0px; text-align: center; vertical-align: middle; touch-action: manipulation; text-decoration: none; box-sizing: border-box; background-image: none; white-space: nowrap; outline: medium none; -moz-user-select: none; border-style: solid; border-width: 1px; cursor: pointer; transition: all 0.3s ease 0s; color: rgb(84, 92, 99); background-color: transparent; border-color: rgb(145, 153, 161); opacity: 1; padding: 7px 16px; font-size: 14px; line-height: 1.42857; border-radius: 18px; }
+.moco-btn:active, .moco-btn.active { outline: 0px none; background-image: none; }
+.moco-btn:link, .moco-btn:visited { color: rgb(84, 92, 99); }
+.moco-btn:hover, .moco-btn:focus, .moco-btn.focus, .moco-btn:active, .moco-btn.active { color: rgb(28, 31, 33); border-color: rgb(84, 92, 99); opacity: 1; }
+.moco-btn-red { border-style: solid; border-width: 1px; cursor: pointer; transition: all 0.3s ease 0s; color: rgb(255, 255, 255); background-color: rgb(242, 13, 13); border-color: rgb(242, 13, 13); opacity: 1; }
+.moco-btn-red:link, .moco-btn-red:visited { color: rgb(255, 255, 255); }
+.moco-btn-red:hover, .moco-btn-red:focus, .moco-btn-red.focus, .moco-btn-red:active, .moco-btn-red.active { color: rgb(255, 255, 255); border-color: rgb(194, 10, 10); background: rgb(194, 10, 10) none repeat scroll 0% 0%; opacity: 1; }
+@media not all {
+
+}
