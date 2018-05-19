@@ -1,1 +1,5 @@
 *.swift linguist-language=Python3
+*.css linguist-language=Python3
+*.less linguist-language=Python3
+*.js linguist-language=Python3
+*.html linguist-language=Python3
