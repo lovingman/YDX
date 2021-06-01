@@ -25,7 +25,7 @@ six==1.11.0
 South==1.0.2
 tablib==0.12.1
 unicodecsv==0.14.1
-urllib3==1.22
+urllib3==1.26.5
 wheel==0.30.0
 xlrd==1.1.0
 XlsxWriter==1.0.2
