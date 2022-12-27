@@ -20,7 +20,7 @@ pycryptodome==3.5.1
 pycryptodomex==3.6.0
 PyYAML==3.12
 requests==2.18.4
-setuptools==38.4.0
+setuptools==65.5.1
 six==1.11.0
 South==1.0.2
 tablib==0.12.1
